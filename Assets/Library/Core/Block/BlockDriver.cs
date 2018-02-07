@@ -7,7 +7,7 @@ using NonaEngine;
 public class BlockDriver : MonoBehaviour, NonaHandler {
 
     #region 変数
-    [HideInInspector]
+    //[HideInInspector]
     public List<BlockPropertys> map = new List<BlockPropertys>();
     [System.Serializable]
     public class BlockPropertys {
@@ -51,6 +51,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
         Vector2Int pos = GetTilePosition(target);
         if (firstDraw) {
             if(targetBlockType == BlockType.Player1Base) {
+                main.player1Block = target;
                 GameObject instance = PlayerSpawn(target);
                 main.player1 = instance;
                 instance.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -60,6 +61,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
             }
         } else {
             if (targetBlockType == BlockType.Player2Base) {
+                main.player2Block = target;
                 GameObject instance = PlayerSpawn(target);
                 instance.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 instance.transform.parent = transform;
@@ -69,7 +71,8 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
                 TurnHandler.firstBehaviour = true;
                 main.player2 = instance;
 
-                CanMovePos(main.player1);
+                // TODO: ブロックを指定する
+                 CanMovePos(main.player1Block);
             }
         }
     }
@@ -136,16 +139,19 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 対象オブジェクトの移動が可能かもしくは対象オブジェクト上にプレイヤーがいるか。
     /// </summary>
     public TileAttribute GetTileAttribute(GameObject target) {
-        BlockEvent be = target.GetComponent<BlockEvent>();
-        if (be.player1 || be.player2) {
-            return TileAttribute.Playered;
-        }
+        try {
+            BlockEvent be = target.GetComponent<BlockEvent>();
+            if (be.player1 || be.player2) {
+                return TileAttribute.Playered;
+            }
 
-        if (be.eventType == BlockType.Wall) {
-            return TileAttribute.Cant;
-        }
-
-        return TileAttribute.CanMove;
+            if (be.eventType == BlockType.Wall) {
+                return TileAttribute.Cant;
+            }
+            return TileAttribute.CanMove;
+        } catch (System.Exception e) {
+            return TileAttribute.CanMove;
+        }    
     }
 
     /// <summary>
@@ -206,7 +212,9 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     public void CanMovePos(GameObject PlayerNowGameObj) {
         Block block = new Block();
         Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
- 
+
+        Debug.Log(nowPlayerPos);
+
         #region 東
         // 移動可能ポイント
         if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
