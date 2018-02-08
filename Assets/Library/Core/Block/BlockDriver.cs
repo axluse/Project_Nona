@@ -7,7 +7,7 @@ using NonaEngine;
 public class BlockDriver : MonoBehaviour, NonaHandler {
 
     #region 変数
-    //[HideInInspector]
+    [HideInInspector]
     public List<BlockPropertys> map = new List<BlockPropertys>();
     [System.Serializable]
     public class BlockPropertys {
@@ -210,51 +210,56 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 移動可能ブロックを表示
     /// </summary>
     public void CanMovePos(GameObject PlayerNowGameObj) {
-        Block block = new Block();
-        Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
+        try {
+            Block block = new Block();
+            Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
+            Debug.Log("Now:" + nowPlayerPos +
+                " East:" + GetTilePosition(GetEast(nowPlayerPos)) +
+                " West:" + GetTilePosition(GetWest(nowPlayerPos)) +
+                " South:" + GetTilePosition(GetSouth(nowPlayerPos)) +
+                " North:" + GetTilePosition(GetNorth(nowPlayerPos)));
+            #region 東
+            // 移動可能ポイント
+            if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetEast(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetEast(nowPlayerPos), Color.magenta);
+            }
+            #endregion
 
-        Debug.Log(nowPlayerPos);
+            #region 西
+            // 移動可能ポイント
+            if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetWest(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetWest(nowPlayerPos), Color.magenta);
+            }
+            #endregion
 
-        #region 東
-        // 移動可能ポイント
-        if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetEast(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetEast(nowPlayerPos), Color.magenta);
+            #region 南
+            // 移動可能ポイント
+            if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetSouth(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetSouth(nowPlayerPos), Color.magenta);
+            }
+            #endregion
+
+            #region 北
+            // 移動可能ポイント
+            if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetNorth(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetNorth(nowPlayerPos), Color.magenta);
+            }
+            #endregion
+        } catch (System.Exception e) {
+            Debug.LogWarning(e);
         }
-        #endregion
-
-        #region 西
-        // 移動可能ポイント
-        if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetWest(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetWest(nowPlayerPos), Color.magenta);
-        }
-        #endregion
-
-        #region 南
-        // 移動可能ポイント
-        if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetSouth(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetSouth(nowPlayerPos), Color.magenta);
-        }
-        #endregion
-
-        #region 北
-        // 移動可能ポイント
-        if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetNorth(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetNorth(nowPlayerPos), Color.magenta);
-        }
-        #endregion
-
     }
 
     /// <summary>
