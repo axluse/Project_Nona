@@ -51,6 +51,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
         Vector2Int pos = GetTilePosition(target);
         if (firstDraw) {
             if(targetBlockType == BlockType.Player1Base) {
+                main.player1Block = target;
                 GameObject instance = PlayerSpawn(target);
                 main.player1 = instance;
                 instance.transform.localRotation = Quaternion.Euler(0, 0, 0);
@@ -60,6 +61,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
             }
         } else {
             if (targetBlockType == BlockType.Player2Base) {
+                main.player2Block = target;
                 GameObject instance = PlayerSpawn(target);
                 instance.transform.localRotation = Quaternion.Euler(0, 180, 0);
                 instance.transform.parent = transform;
@@ -69,7 +71,8 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
                 TurnHandler.firstBehaviour = true;
                 main.player2 = instance;
 
-                CanMovePos(main.player1);
+                // TODO: ブロックを指定する
+                 CanMovePos(main.player1Block);
             }
         }
     }
@@ -136,16 +139,19 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 対象オブジェクトの移動が可能かもしくは対象オブジェクト上にプレイヤーがいるか。
     /// </summary>
     public TileAttribute GetTileAttribute(GameObject target) {
-        BlockEvent be = target.GetComponent<BlockEvent>();
-        if (be.player1 || be.player2) {
-            return TileAttribute.Playered;
-        }
+        try {
+            BlockEvent be = target.GetComponent<BlockEvent>();
+            if (be.player1 || be.player2) {
+                return TileAttribute.Playered;
+            }
 
-        if (be.eventType == BlockType.Wall) {
-            return TileAttribute.Cant;
-        }
-
-        return TileAttribute.CanMove;
+            if (be.eventType == BlockType.Wall) {
+                return TileAttribute.Cant;
+            }
+            return TileAttribute.CanMove;
+        } catch (System.Exception e) {
+            return TileAttribute.CanMove;
+        }    
     }
 
     /// <summary>
@@ -204,49 +210,56 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 移動可能ブロックを表示
     /// </summary>
     public void CanMovePos(GameObject PlayerNowGameObj) {
-        Block block = new Block();
-        Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
- 
-        #region 東
-        // 移動可能ポイント
-        if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetEast(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetEast(nowPlayerPos), Color.magenta);
-        }
-        #endregion
+        try {
+            Block block = new Block();
+            Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
+            Debug.Log("Now:" + nowPlayerPos +
+                " East:" + GetTilePosition(GetEast(nowPlayerPos)) +
+                " West:" + GetTilePosition(GetWest(nowPlayerPos)) +
+                " South:" + GetTilePosition(GetSouth(nowPlayerPos)) +
+                " North:" + GetTilePosition(GetNorth(nowPlayerPos)));
+            #region 東
+            // 移動可能ポイント
+            if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetEast(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetEast(nowPlayerPos), Color.magenta);
+            }
+            #endregion
 
-        #region 西
-        // 移動可能ポイント
-        if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetWest(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetWest(nowPlayerPos), Color.magenta);
-        }
-        #endregion
+            #region 西
+            // 移動可能ポイント
+            if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetWest(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetWest(nowPlayerPos), Color.magenta);
+            }
+            #endregion
 
-        #region 南
-        // 移動可能ポイント
-        if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetSouth(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetSouth(nowPlayerPos), Color.magenta);
-        }
-        #endregion
+            #region 南
+            // 移動可能ポイント
+            if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetSouth(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetSouth(nowPlayerPos), Color.magenta);
+            }
+            #endregion
 
-        #region 北
-        // 移動可能ポイント
-        if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.CanMove) {
-            block.Focus(GetNorth(nowPlayerPos), canMovePointColor);
-            // 攻撃可能ポイント
-        } else if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.Playered) {
-            block.Focus(GetNorth(nowPlayerPos), Color.magenta);
+            #region 北
+            // 移動可能ポイント
+            if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.CanMove) {
+                block.Focus(GetNorth(nowPlayerPos), canMovePointColor);
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.Playered) {
+                block.Focus(GetNorth(nowPlayerPos), Color.magenta);
+            }
+            #endregion
+        } catch (System.Exception e) {
+            Debug.LogWarning(e);
         }
-        #endregion
-
     }
 
     /// <summary>
