@@ -7,13 +7,11 @@ using NonaEngine;
 public class BlockDriver : MonoBehaviour, NonaHandler {
 
     #region 変数
-    [HideInInspector]
-    public List<BlockPropertys> map = new List<BlockPropertys>();
+    [HideInInspector]public List<BlockPropertys> map = new List<BlockPropertys>();
     [System.Serializable]
     public class BlockPropertys {
         public List<GameObject> x;
     }
-
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject parent;
 
@@ -30,6 +28,8 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
 
     private bool firstDraw = true;
     #endregion
+
+
 
     #region　[初期配置]コントロール
     public void OnClickBlock(GameObject clickBlock) {
@@ -71,8 +71,8 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
                 TurnHandler.firstBehaviour = true;
                 main.player2 = instance;
 
-                // TODO: ブロックを指定する
-                 CanMovePos(main.player1Block);
+                main.PhaseController();
+
             }
         }
     }
@@ -84,7 +84,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// </summary>
     public GameObject GetNorth(Vector2Int pos) {
         if(pos.y < GetMapHeight()) {
-            return map[pos.y + 1].x[pos.x];
+            return map[pos.x].x[pos.y+1];
         }
         return null;
     }
@@ -93,8 +93,8 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 西
     /// </summary>
     public GameObject GetWest(Vector2Int pos) {
-        if (pos.y < GetMapWidth()) {
-            return map[pos.y].x[pos.x + 1];
+        if (pos.x < GetMapWidth()) {
+            return map[pos.x].x[pos.y + 1];
         }
         return null;
     }
@@ -104,7 +104,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// </summary>
     public GameObject GetSouth(Vector2Int pos) {
         if (pos.y > 0) {
-            return map[pos.y - 1].x[pos.x];
+            return map[pos.x].x[pos.y -1];
         }
         return null;
     }
@@ -114,7 +114,7 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// </summary>
     public GameObject GetEast(Vector2Int pos) {
         if (pos.y > 0) {
-            return map[pos.y].x[pos.x - 1];
+            return map[pos.x-1].x[pos.y];
         }
         return null;
     }
@@ -152,6 +152,20 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
         } catch (System.Exception e) {
             return TileAttribute.CanMove;
         }    
+    }
+
+    public int GetMoveOrAttack(GameObject target) {
+        Block block = new Block();
+        if (target != null) {
+            if (GetTileAttribute(target) == TileAttribute.CanMove) {
+                return 1;
+
+                // 攻撃可能ポイント
+            } else if (GetTileAttribute(target) == TileAttribute.Playered) {
+                return 2;
+            }
+        }
+        return 0;
     }
 
     /// <summary>
@@ -209,56 +223,37 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// <summary>
     /// 移動可能ブロックを表示
     /// </summary>
+    // ■表示コントロール
     public void CanMovePos(GameObject PlayerNowGameObj) {
         try {
-            Block block = new Block();
+            // 現在位置
             Vector2Int nowPlayerPos = GetTilePosition(PlayerNowGameObj);
-            Debug.Log("Now:" + nowPlayerPos +
-                " East:" + GetTilePosition(GetEast(nowPlayerPos)) +
-                " West:" + GetTilePosition(GetWest(nowPlayerPos)) +
-                " South:" + GetTilePosition(GetSouth(nowPlayerPos)) +
-                " North:" + GetTilePosition(GetNorth(nowPlayerPos)));
-            #region 東
-            // 移動可能ポイント
-            if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.CanMove) {
-                block.Focus(GetEast(nowPlayerPos), canMovePointColor);
-                // 攻撃可能ポイント
-            } else if (GetTileAttribute(GetEast(nowPlayerPos)) == TileAttribute.Playered) {
-                block.Focus(GetEast(nowPlayerPos), Color.magenta);
-            }
-            #endregion
+            Block b = new Block();
+            b.FocusReset();
+            // 東
+            MoveOrAttackView(GetEast(nowPlayerPos));
+            // 西
+            MoveOrAttackView(GetWest(nowPlayerPos));
+            // 南
+            MoveOrAttackView(GetSouth(nowPlayerPos));
+            // 北
+            MoveOrAttackView(GetNorth(nowPlayerPos));
 
-            #region 西
-            // 移動可能ポイント
-            if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.CanMove) {
-                block.Focus(GetWest(nowPlayerPos), canMovePointColor);
-                // 攻撃可能ポイント
-            } else if (GetTileAttribute(GetWest(nowPlayerPos)) == TileAttribute.Playered) {
-                block.Focus(GetWest(nowPlayerPos), Color.magenta);
-            }
-            #endregion
-
-            #region 南
-            // 移動可能ポイント
-            if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.CanMove) {
-                block.Focus(GetSouth(nowPlayerPos), canMovePointColor);
-                // 攻撃可能ポイント
-            } else if (GetTileAttribute(GetSouth(nowPlayerPos)) == TileAttribute.Playered) {
-                block.Focus(GetSouth(nowPlayerPos), Color.magenta);
-            }
-            #endregion
-
-            #region 北
-            // 移動可能ポイント
-            if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.CanMove) {
-                block.Focus(GetNorth(nowPlayerPos), canMovePointColor);
-                // 攻撃可能ポイント
-            } else if (GetTileAttribute(GetNorth(nowPlayerPos)) == TileAttribute.Playered) {
-                block.Focus(GetNorth(nowPlayerPos), Color.magenta);
-            }
-            #endregion
         } catch (System.Exception e) {
             Debug.LogWarning(e);
+        }
+    }
+    // ■単体表示コントロール
+    public void MoveOrAttackView(GameObject target) {
+        Block block = new Block();
+        Debug.Log(target);
+        if (target != null) {
+            int cd = GetMoveOrAttack(target);
+            if(cd == 1) { 
+                block.Focus(target, canMovePointColor);
+            } else if (cd == 0) {
+                block.Focus(target, Color.magenta);
+            }
         }
     }
 
@@ -266,7 +261,14 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// 移動元から移動先まで移動が可能であるか。
     /// </summary>
     public bool GetCanMovePoint(GameObject player, GameObject toBlock) {
-        return true;
+        Vector2Int from = GetTilePosition(player);
+        Vector2Int to = GetTilePosition(toBlock);
+        Vector2Int answer = from - to;
+        int point = answer.y + answer.x;
+        if (point == 1 || point == -1) {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -289,22 +291,26 @@ public class BlockDriver : MonoBehaviour, NonaHandler {
     /// タイル座標を取得
     /// </summary>
     public Vector2Int GetTilePosition(GameObject target) {
-        int iX = 0;
-        int iY = 0;
-        Vector2Int ret = Vector2Int.zero;
-        foreach(BlockPropertys bp in map) {
-            iX = 0;
-            foreach (GameObject o in bp.x) {
-                if(o == target) {
-                    ret.y = iX;
-                    ret.x = iY;
-                    break;
+        if(target == null) {
+            return new Vector2Int(-1, -1);
+        } else {
+            int iX = 0;
+            int iY = 0;
+            Vector2Int ret = Vector2Int.zero;
+            foreach (BlockPropertys bp in map) {
+                iX = 0;
+                foreach (GameObject o in bp.x) {
+                    if (o == target) {
+                        ret.y = iX;
+                        ret.x = iY;
+                        break;
+                    }
+                    ++iX;
                 }
-                ++iX;
+                ++iY;
             }
-            ++iY;
+            return ret;
         }
-        return ret;
     }
 
 }

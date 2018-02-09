@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 281094500}
-  m_IndirectSpecularColor: {r: 0.73200387, g: 0.6829156, b: 0.68197584, a: 1}
+  m_IndirectSpecularColor: {r: 0.7320051, g: 0.68291706, b: 0.68197715, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -273,7 +272,6 @@ GameObject:
   - component: {fileID: 18413422}
   - component: {fileID: 18413426}
   - component: {fileID: 18413425}
-  - component: {fileID: 18413424}
   - component: {fileID: 18413427}
   m_Layer: 0
   m_Name: Sand (20)
@@ -339,17 +337,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 18413420}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &18413424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 18413420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &18413425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -488,7 +475,6 @@ GameObject:
   - component: {fileID: 93937633}
   - component: {fileID: 93937637}
   - component: {fileID: 93937636}
-  - component: {fileID: 93937635}
   - component: {fileID: 93937638}
   m_Layer: 0
   m_Name: Sand (37)
@@ -554,17 +540,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 93937631}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &93937635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 93937631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &93937636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -695,7 +670,6 @@ GameObject:
   - component: {fileID: 94732607}
   - component: {fileID: 94732611}
   - component: {fileID: 94732610}
-  - component: {fileID: 94732609}
   - component: {fileID: 94732612}
   m_Layer: 0
   m_Name: Sand (8)
@@ -761,17 +735,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 94732605}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &94732609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 94732605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &94732610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1036,7 +999,6 @@ GameObject:
   - component: {fileID: 191456422}
   - component: {fileID: 191456426}
   - component: {fileID: 191456425}
-  - component: {fileID: 191456424}
   - component: {fileID: 191456427}
   m_Layer: 0
   m_Name: Sand (15)
@@ -1102,17 +1064,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 191456420}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &191456424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 191456420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &191456425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1167,7 +1118,6 @@ GameObject:
   - component: {fileID: 214380130}
   - component: {fileID: 214380134}
   - component: {fileID: 214380133}
-  - component: {fileID: 214380132}
   - component: {fileID: 214380135}
   m_Layer: 0
   m_Name: Sand (1)
@@ -1233,17 +1183,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 214380128}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &214380132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 214380128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &214380133
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1460,7 +1399,6 @@ GameObject:
   - component: {fileID: 244999533}
   - component: {fileID: 244999537}
   - component: {fileID: 244999536}
-  - component: {fileID: 244999535}
   - component: {fileID: 244999538}
   m_Layer: 0
   m_Name: Sand (28)
@@ -1526,17 +1464,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244999531}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &244999535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 244999531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &244999536
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1816,7 +1743,6 @@ GameObject:
   - component: {fileID: 402442794}
   - component: {fileID: 402442798}
   - component: {fileID: 402442797}
-  - component: {fileID: 402442796}
   - component: {fileID: 402442799}
   m_Layer: 0
   m_Name: Sand (6)
@@ -1882,17 +1808,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402442792}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &402442796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 402442792}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &402442797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2212,7 +2127,6 @@ GameObject:
   - component: {fileID: 520973766}
   - component: {fileID: 520973770}
   - component: {fileID: 520973769}
-  - component: {fileID: 520973768}
   - component: {fileID: 520973771}
   m_Layer: 0
   m_Name: Sand (12)
@@ -2278,17 +2192,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 520973764}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &520973768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 520973764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &520973769
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2330,6 +2233,87 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!1 &532152628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 532152629}
+  - component: {fileID: 532152632}
+  - component: {fileID: 532152631}
+  - component: {fileID: 532152630}
+  m_Layer: 5
+  m_Name: RightTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &532152629
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 532152628}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0011291504, y: 0.0005187988, z: 0}
+  m_LocalScale: {x: 0.9996094, y: 0.9996095, z: 0.9996093}
+  m_Children: []
+  m_Father: {fileID: 620194944}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0011239052, y: 0.00051784515}
+  m_SizeDelta: {x: 512, y: 256}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &532152630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 532152628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4cb077bd8fab419e067cfaefc7f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewing: 0
+--- !u!114 &532152631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 532152628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 1dc3befec52e8ad43a02a2b304c4f237, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &532152632
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 532152628}
 --- !u!1001 &536469987
 Prefab:
   m_ObjectHideFlags: 0
@@ -2503,7 +2487,6 @@ GameObject:
   - component: {fileID: 589056351}
   - component: {fileID: 589056355}
   - component: {fileID: 589056354}
-  - component: {fileID: 589056353}
   - component: {fileID: 589056356}
   m_Layer: 0
   m_Name: Sand (31)
@@ -2569,17 +2552,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 589056349}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &589056353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 589056349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &589056354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2714,7 +2686,6 @@ GameObject:
   - component: {fileID: 598283920}
   - component: {fileID: 598283924}
   - component: {fileID: 598283923}
-  - component: {fileID: 598283922}
   - component: {fileID: 598283925}
   m_Layer: 0
   m_Name: Sand (38)
@@ -2780,17 +2751,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598283918}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &598283922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 598283918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &598283923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2921,6 +2881,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9,
     type: 2}
   m_PrefabInternal: {fileID: 608479237}
+--- !u!224 &620194944 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
 --- !u!1001 &624573590
 Prefab:
   m_ObjectHideFlags: 0
@@ -3324,7 +3289,6 @@ GameObject:
   - component: {fileID: 704962334}
   - component: {fileID: 704962338}
   - component: {fileID: 704962337}
-  - component: {fileID: 704962336}
   - component: {fileID: 704962339}
   m_Layer: 0
   m_Name: Sand (29)
@@ -3390,17 +3354,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 704962332}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &704962336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 704962332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &704962337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3523,6 +3476,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9,
     type: 2}
   m_PrefabInternal: {fileID: 709998494}
+--- !u!114 &713172750 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114307153017214850, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &733918501
 GameObject:
   m_ObjectHideFlags: 0
@@ -3536,7 +3495,6 @@ GameObject:
   - component: {fileID: 733918503}
   - component: {fileID: 733918507}
   - component: {fileID: 733918506}
-  - component: {fileID: 733918505}
   - component: {fileID: 733918508}
   m_Layer: 0
   m_Name: Sand (46)
@@ -3602,17 +3560,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 733918501}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &733918505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 733918501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &733918506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3799,7 +3746,6 @@ GameObject:
   - component: {fileID: 816543523}
   - component: {fileID: 816543527}
   - component: {fileID: 816543526}
-  - component: {fileID: 816543525}
   - component: {fileID: 816543528}
   m_Layer: 0
   m_Name: Sand (49)
@@ -3865,17 +3811,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 816543521}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &816543525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 816543521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &816543526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3917,6 +3852,12 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!114 &817616354 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114791990987931154, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &832691047
 Prefab:
   m_ObjectHideFlags: 0
@@ -4003,7 +3944,6 @@ GameObject:
   - component: {fileID: 835464923}
   - component: {fileID: 835464927}
   - component: {fileID: 835464926}
-  - component: {fileID: 835464925}
   - component: {fileID: 835464928}
   m_Layer: 0
   m_Name: Sand (40)
@@ -4069,17 +4009,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 835464921}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &835464925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 835464921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &835464926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4121,6 +4050,12 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!114 &836033109 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114349605695591920, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &867477673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,7 +4069,6 @@ GameObject:
   - component: {fileID: 867477675}
   - component: {fileID: 867477679}
   - component: {fileID: 867477678}
-  - component: {fileID: 867477677}
   - component: {fileID: 867477680}
   m_Layer: 0
   m_Name: Sand (17)
@@ -4200,17 +4134,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 867477673}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &867477677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 867477673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &867477678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4265,7 +4188,6 @@ GameObject:
   - component: {fileID: 895264615}
   - component: {fileID: 895264619}
   - component: {fileID: 895264618}
-  - component: {fileID: 895264617}
   - component: {fileID: 895264620}
   m_Layer: 0
   m_Name: Sand (42)
@@ -4331,17 +4253,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 895264613}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &895264617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 895264613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &895264618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4396,7 +4307,6 @@ GameObject:
   - component: {fileID: 903767112}
   - component: {fileID: 903767116}
   - component: {fileID: 903767115}
-  - component: {fileID: 903767114}
   - component: {fileID: 903767117}
   m_Layer: 0
   m_Name: Sand (10)
@@ -4462,17 +4372,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 903767110}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &903767114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 903767110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &903767115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4591,7 +4490,6 @@ GameObject:
   - component: {fileID: 922310711}
   - component: {fileID: 922310715}
   - component: {fileID: 922310714}
-  - component: {fileID: 922310713}
   - component: {fileID: 922310716}
   m_Layer: 0
   m_Name: Sand (26)
@@ -4657,17 +4555,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 922310709}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &922310713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 922310709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &922310714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4722,7 +4609,6 @@ GameObject:
   - component: {fileID: 940807476}
   - component: {fileID: 940807480}
   - component: {fileID: 940807479}
-  - component: {fileID: 940807478}
   - component: {fileID: 940807481}
   m_Layer: 0
   m_Name: Sand (32)
@@ -4788,17 +4674,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940807474}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &940807478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 940807474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &940807479
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4853,7 +4728,6 @@ GameObject:
   - component: {fileID: 940932748}
   - component: {fileID: 940932752}
   - component: {fileID: 940932751}
-  - component: {fileID: 940932750}
   - component: {fileID: 940932753}
   m_Layer: 0
   m_Name: Sand (22)
@@ -4919,17 +4793,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 940932746}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &940932750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 940932746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &940932751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4984,7 +4847,6 @@ GameObject:
   - component: {fileID: 952592876}
   - component: {fileID: 952592880}
   - component: {fileID: 952592879}
-  - component: {fileID: 952592878}
   - component: {fileID: 952592881}
   m_Layer: 0
   m_Name: Sand (3)
@@ -5050,17 +4912,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 952592874}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &952592878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 952592874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &952592879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5102,6 +4953,171 @@ MonoBehaviour:
   eventType: 2
   player1: 0
   player2: 0
+--- !u!1001 &955854056
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.1810675
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.897949
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.9183304
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.114677094
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.8429398
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.4866716
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.1986265
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224457803595612846, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12.299999
+      objectReference: {fileID: 0}
+    - target: {fileID: 224500506317809824, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -42.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224227781797882190, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 224227781797882190, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224653032455948006, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0000038146973
+      objectReference: {fileID: 0}
+    - target: {fileID: 224653032455948006, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 223399724296027432, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1027248425}
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1158730417}
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnMoving
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f837b62f71d223d4783745b137dd758c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &966265403
 Prefab:
   m_ObjectHideFlags: 0
@@ -5437,7 +5453,6 @@ GameObject:
   - component: {fileID: 973704651}
   - component: {fileID: 973704655}
   - component: {fileID: 973704654}
-  - component: {fileID: 973704653}
   - component: {fileID: 973704656}
   m_Layer: 0
   m_Name: Sand (25)
@@ -5503,17 +5518,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 973704649}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &973704653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973704649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &973704654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5568,7 +5572,6 @@ GameObject:
   - component: {fileID: 975126137}
   - component: {fileID: 975126141}
   - component: {fileID: 975126140}
-  - component: {fileID: 975126139}
   - component: {fileID: 975126142}
   m_Layer: 0
   m_Name: Sand (34)
@@ -5634,17 +5637,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 975126135}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &975126139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975126135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &975126140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5856,7 +5848,6 @@ GameObject:
   - component: {fileID: 1006890351}
   - component: {fileID: 1006890355}
   - component: {fileID: 1006890354}
-  - component: {fileID: 1006890353}
   - component: {fileID: 1006890356}
   m_Layer: 0
   m_Name: Sand (54)
@@ -5922,17 +5913,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1006890349}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1006890353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1006890349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1006890354
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5974,6 +5954,11 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!20 &1027248425 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20146819681315722, guid: 46b56d046db8b7b48bef299ca4f61d8e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1901545348}
 --- !u!1001 &1037748844
 Prefab:
   m_ObjectHideFlags: 0
@@ -6079,6 +6064,12 @@ Transform:
   m_Father: {fileID: 967938318}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076825129 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114792585021748842, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1078451468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6092,7 +6083,6 @@ GameObject:
   - component: {fileID: 1078451470}
   - component: {fileID: 1078451474}
   - component: {fileID: 1078451473}
-  - component: {fileID: 1078451472}
   - component: {fileID: 1078451475}
   m_Layer: 0
   m_Name: Sand (45)
@@ -6158,17 +6148,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1078451468}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1078451472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1078451468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1078451473
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6580,7 +6559,6 @@ GameObject:
   - component: {fileID: 1146207943}
   - component: {fileID: 1146207947}
   - component: {fileID: 1146207946}
-  - component: {fileID: 1146207945}
   - component: {fileID: 1146207948}
   m_Layer: 0
   m_Name: Sand (23)
@@ -6646,17 +6624,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1146207941}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1146207945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1146207941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1146207946
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7005,6 +6972,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2039f67c05ef6479555005b0d0790b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Block: {fileID: 0}
+  player2Block: {fileID: 0}
+  turnText: {fileID: 817616354}
+  firstTurnText: {fileID: 836033109}
+  phaseSelecter: {fileID: 1579778184}
+  phase_koma: {fileID: 1948314618}
+  phase_hp: {fileID: 1076825129}
+  phase_atk: {fileID: 713172750}
+  leftTurn: {fileID: 2140471199}
+  rightTurn: {fileID: 532152630}
   phase: 4
   blockDriver: {fileID: 1158730416}
 --- !u!1 &1190409400
@@ -7020,7 +6997,6 @@ GameObject:
   - component: {fileID: 1190409402}
   - component: {fileID: 1190409406}
   - component: {fileID: 1190409405}
-  - component: {fileID: 1190409404}
   - component: {fileID: 1190409407}
   m_Layer: 0
   m_Name: Sand (52)
@@ -7086,17 +7062,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1190409400}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1190409404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1190409400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1190409405
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7151,7 +7116,6 @@ GameObject:
   - component: {fileID: 1215747614}
   - component: {fileID: 1215747618}
   - component: {fileID: 1215747617}
-  - component: {fileID: 1215747616}
   - component: {fileID: 1215747619}
   m_Layer: 0
   m_Name: Sand (19)
@@ -7217,17 +7181,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1215747612}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1215747616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1215747612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1215747617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7282,7 +7235,6 @@ GameObject:
   - component: {fileID: 1234913618}
   - component: {fileID: 1234913622}
   - component: {fileID: 1234913621}
-  - component: {fileID: 1234913620}
   - component: {fileID: 1234913623}
   m_Layer: 0
   m_Name: Sand (2)
@@ -7348,17 +7300,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234913616}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1234913620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1234913616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1234913621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7413,7 +7354,6 @@ GameObject:
   - component: {fileID: 1259185025}
   - component: {fileID: 1259185029}
   - component: {fileID: 1259185028}
-  - component: {fileID: 1259185027}
   - component: {fileID: 1259185030}
   m_Layer: 0
   m_Name: Sand (41)
@@ -7479,17 +7419,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1259185023}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1259185027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1259185023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1259185028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7544,7 +7473,6 @@ GameObject:
   - component: {fileID: 1317329798}
   - component: {fileID: 1317329802}
   - component: {fileID: 1317329801}
-  - component: {fileID: 1317329800}
   - component: {fileID: 1317329803}
   m_Layer: 0
   m_Name: Sand (21)
@@ -7610,17 +7538,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1317329796}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1317329800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1317329796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1317329801
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7836,7 +7753,6 @@ GameObject:
   - component: {fileID: 1321260546}
   - component: {fileID: 1321260550}
   - component: {fileID: 1321260549}
-  - component: {fileID: 1321260548}
   - component: {fileID: 1321260551}
   m_Layer: 0
   m_Name: Sand
@@ -7902,17 +7818,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1321260544}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1321260548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1321260544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1321260549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7967,7 +7872,6 @@ GameObject:
   - component: {fileID: 1334678342}
   - component: {fileID: 1334678346}
   - component: {fileID: 1334678345}
-  - component: {fileID: 1334678344}
   - component: {fileID: 1334678347}
   m_Layer: 0
   m_Name: Sand (27)
@@ -8033,17 +7937,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1334678340}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1334678344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1334678340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1334678345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8098,7 +7991,6 @@ GameObject:
   - component: {fileID: 1365856180}
   - component: {fileID: 1365856184}
   - component: {fileID: 1365856183}
-  - component: {fileID: 1365856182}
   - component: {fileID: 1365856185}
   m_Layer: 0
   m_Name: Sand (35)
@@ -8164,17 +8056,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1365856178}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1365856182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1365856178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1365856183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8229,7 +8110,6 @@ GameObject:
   - component: {fileID: 1371961348}
   - component: {fileID: 1371961352}
   - component: {fileID: 1371961351}
-  - component: {fileID: 1371961350}
   - component: {fileID: 1371961353}
   m_Layer: 0
   m_Name: Sand (7)
@@ -8295,17 +8175,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1371961346}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1371961350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1371961346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1371961351
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8678,7 +8547,6 @@ GameObject:
   - component: {fileID: 1441989461}
   - component: {fileID: 1441989465}
   - component: {fileID: 1441989464}
-  - component: {fileID: 1441989463}
   - component: {fileID: 1441989466}
   m_Layer: 0
   m_Name: Sand (36)
@@ -8744,17 +8612,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1441989459}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1441989463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1441989459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1441989464
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8796,6 +8653,68 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!1 &1456977327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1456977330}
+  - component: {fileID: 1456977329}
+  - component: {fileID: 1456977328}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1456977328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456977327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1456977329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456977327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 5
+--- !u!4 &1456977330
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456977327}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1464146562
 Prefab:
   m_ObjectHideFlags: 0
@@ -8974,7 +8893,6 @@ GameObject:
   - component: {fileID: 1469957242}
   - component: {fileID: 1469957246}
   - component: {fileID: 1469957245}
-  - component: {fileID: 1469957244}
   - component: {fileID: 1469957247}
   m_Layer: 0
   m_Name: Sand (48)
@@ -9040,17 +8958,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1469957240}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1469957244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1469957240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1469957245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9105,7 +9012,6 @@ GameObject:
   - component: {fileID: 1490090421}
   - component: {fileID: 1490090425}
   - component: {fileID: 1490090424}
-  - component: {fileID: 1490090423}
   - component: {fileID: 1490090426}
   m_Layer: 0
   m_Name: Sand (50)
@@ -9171,17 +9077,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1490090419}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1490090423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1490090419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1490090424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9312,7 +9207,6 @@ GameObject:
   - component: {fileID: 1512250566}
   - component: {fileID: 1512250570}
   - component: {fileID: 1512250569}
-  - component: {fileID: 1512250568}
   - component: {fileID: 1512250571}
   m_Layer: 0
   m_Name: Sand (4)
@@ -9378,17 +9272,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1512250564}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1512250568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1512250564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1512250569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9532,7 +9415,6 @@ GameObject:
   - component: {fileID: 1526993080}
   - component: {fileID: 1526993084}
   - component: {fileID: 1526993083}
-  - component: {fileID: 1526993082}
   - component: {fileID: 1526993085}
   m_Layer: 0
   m_Name: Sand (18)
@@ -9598,17 +9480,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526993078}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1526993082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1526993078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1526993083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9650,6 +9521,11 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!1 &1579778184 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1153831356678540, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
 --- !u!1001 &1596306158
 Prefab:
   m_ObjectHideFlags: 0
@@ -9743,7 +9619,6 @@ GameObject:
   - component: {fileID: 1602315975}
   - component: {fileID: 1602315979}
   - component: {fileID: 1602315978}
-  - component: {fileID: 1602315977}
   - component: {fileID: 1602315980}
   m_Layer: 0
   m_Name: Sand (11)
@@ -9809,17 +9684,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1602315973}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1602315977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1602315973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1602315978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9874,7 +9738,6 @@ GameObject:
   - component: {fileID: 1613969361}
   - component: {fileID: 1613969365}
   - component: {fileID: 1613969364}
-  - component: {fileID: 1613969363}
   - component: {fileID: 1613969366}
   m_Layer: 0
   m_Name: Sand (30)
@@ -9940,17 +9803,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1613969359}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1613969363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1613969359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1613969364
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10005,7 +9857,6 @@ GameObject:
   - component: {fileID: 1622916413}
   - component: {fileID: 1622916417}
   - component: {fileID: 1622916416}
-  - component: {fileID: 1622916415}
   - component: {fileID: 1622916418}
   m_Layer: 0
   m_Name: Sand (55)
@@ -10071,17 +9922,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622916411}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1622916415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1622916411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1622916416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10301,7 +10141,6 @@ GameObject:
   - component: {fileID: 1718897558}
   - component: {fileID: 1718897562}
   - component: {fileID: 1718897561}
-  - component: {fileID: 1718897560}
   - component: {fileID: 1718897563}
   m_Layer: 0
   m_Name: Sand (13)
@@ -10367,17 +10206,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718897556}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1718897560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718897556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1718897561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10508,7 +10336,6 @@ GameObject:
   - component: {fileID: 1734678240}
   - component: {fileID: 1734678244}
   - component: {fileID: 1734678243}
-  - component: {fileID: 1734678242}
   - component: {fileID: 1734678245}
   m_Layer: 0
   m_Name: Sand (24)
@@ -10574,17 +10401,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1734678238}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1734678242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1734678238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1734678243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10751,7 +10567,6 @@ GameObject:
   - component: {fileID: 1804935345}
   - component: {fileID: 1804935349}
   - component: {fileID: 1804935348}
-  - component: {fileID: 1804935347}
   - component: {fileID: 1804935350}
   m_Layer: 0
   m_Name: Sand (43)
@@ -10817,17 +10632,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1804935343}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1804935347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1804935343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1804935348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10931,7 +10735,6 @@ GameObject:
   - component: {fileID: 1880315105}
   - component: {fileID: 1880315109}
   - component: {fileID: 1880315108}
-  - component: {fileID: 1880315107}
   - component: {fileID: 1880315110}
   m_Layer: 0
   m_Name: Sand (14)
@@ -10997,17 +10800,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1880315103}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1880315107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1880315103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1880315108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11058,11 +10850,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.59
+      value: 2.037
       objectReference: {fileID: 0}
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.56
+      value: 6.19
       objectReference: {fileID: 0}
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11117,7 +10909,6 @@ GameObject:
   - component: {fileID: 1907532164}
   - component: {fileID: 1907532168}
   - component: {fileID: 1907532167}
-  - component: {fileID: 1907532166}
   - component: {fileID: 1907532169}
   m_Layer: 0
   m_Name: Sand (9)
@@ -11183,17 +10974,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1907532162}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1907532166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1907532162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1907532167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11324,7 +11104,6 @@ GameObject:
   - component: {fileID: 1939795993}
   - component: {fileID: 1939795997}
   - component: {fileID: 1939795996}
-  - component: {fileID: 1939795995}
   - component: {fileID: 1939795998}
   m_Layer: 0
   m_Name: Sand (39)
@@ -11390,17 +11169,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939795991}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1939795995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1939795991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1939795996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11455,7 +11223,6 @@ GameObject:
   - component: {fileID: 1940309990}
   - component: {fileID: 1940309994}
   - component: {fileID: 1940309993}
-  - component: {fileID: 1940309992}
   - component: {fileID: 1940309995}
   m_Layer: 0
   m_Name: Sand (5)
@@ -11521,17 +11288,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1940309988}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1940309992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1940309988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1940309993
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11573,6 +11329,12 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
+--- !u!114 &1948314618 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114574340925552122, guid: f837b62f71d223d4783745b137dd758c,
+    type: 2}
+  m_PrefabInternal: {fileID: 955854056}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1962723176
 GameObject:
   m_ObjectHideFlags: 0
@@ -11586,7 +11348,6 @@ GameObject:
   - component: {fileID: 1962723178}
   - component: {fileID: 1962723182}
   - component: {fileID: 1962723181}
-  - component: {fileID: 1962723180}
   - component: {fileID: 1962723183}
   m_Layer: 0
   m_Name: Sand (47)
@@ -11652,17 +11413,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1962723176}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1962723180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1962723176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1962723181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11717,7 +11467,6 @@ GameObject:
   - component: {fileID: 1968282150}
   - component: {fileID: 1968282154}
   - component: {fileID: 1968282153}
-  - component: {fileID: 1968282152}
   - component: {fileID: 1968282155}
   m_Layer: 0
   m_Name: Sand (16)
@@ -11783,17 +11532,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1968282148}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1968282152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1968282148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1968282153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11848,7 +11586,6 @@ GameObject:
   - component: {fileID: 1974991182}
   - component: {fileID: 1974991186}
   - component: {fileID: 1974991185}
-  - component: {fileID: 1974991184}
   - component: {fileID: 1974991187}
   m_Layer: 0
   m_Name: Sand (33)
@@ -11914,17 +11651,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974991180}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &1974991184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1974991180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1974991185
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12055,7 +11781,6 @@ GameObject:
   - component: {fileID: 2007234064}
   - component: {fileID: 2007234068}
   - component: {fileID: 2007234067}
-  - component: {fileID: 2007234066}
   - component: {fileID: 2007234069}
   m_Layer: 0
   m_Name: Sand (53)
@@ -12121,17 +11846,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007234062}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &2007234066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2007234062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2007234067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12266,7 +11980,6 @@ GameObject:
   - component: {fileID: 2042658682}
   - component: {fileID: 2042658686}
   - component: {fileID: 2042658685}
-  - component: {fileID: 2042658684}
   - component: {fileID: 2042658687}
   m_Layer: 0
   m_Name: Sand (44)
@@ -12332,17 +12045,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2042658680}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &2042658684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2042658680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2042658685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12397,7 +12099,6 @@ GameObject:
   - component: {fileID: 2065374010}
   - component: {fileID: 2065374014}
   - component: {fileID: 2065374013}
-  - component: {fileID: 2065374012}
   - component: {fileID: 2065374015}
   m_Layer: 0
   m_Name: Sand (51)
@@ -12463,17 +12164,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2065374008}
   m_Mesh: {fileID: 4300000, guid: 10c39ee33a8dbcd4abdcc72adbfe21b3, type: 3}
---- !u!114 &2065374012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2065374008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dabd357235b424c4293604d5cc16138b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &2065374013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12591,3 +12281,84 @@ Transform:
   m_PrefabParentObject: {fileID: 4281780448642680, guid: 0f9577b4dda6cc546abea4737be5a392,
     type: 2}
   m_PrefabInternal: {fileID: 2130242311}
+--- !u!1 &2140471197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2140471198}
+  - component: {fileID: 2140471201}
+  - component: {fileID: 2140471200}
+  - component: {fileID: 2140471199}
+  m_Layer: 5
+  m_Name: LeftTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2140471198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140471197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 620194944}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 512, y: 256}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2140471199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140471197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a4cb077bd8fab419e067cfaefc7f7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewing: 0
+--- !u!114 &2140471200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140471197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 0559c7b765b8a63498eadb5421dc2c4d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &2140471201
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140471197}

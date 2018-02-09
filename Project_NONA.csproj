@@ -246,8 +246,14 @@
     <Compile Include="Assets\Library\Core\Block\Block.cs" />
     <Compile Include="Assets\Library\Core\Block\BlockDriver.cs" />
     <Compile Include="Assets\Library\Core\Block\BlockEvent.cs" />
+    <Compile Include="Assets\Library\Core\Block\FindBlock.cs" />
+    <Compile Include="Assets\Library\Core\PlayerControll\FieldSelecter.cs" />
+    <Compile Include="Assets\Library\Core\PlayerControll\Main.cs" />
+    <Compile Include="Assets\Library\Core\PlayerControll\PhaseControll.cs" />
+    <Compile Include="Assets\Library\Core\Turn\TurnHandler.cs" />
     <Compile Include="Assets\Library\System\LayeredUpdater.cs" />
     <Compile Include="Assets\Library\System\RaycastObject.cs" />
+    <Compile Include="Assets\Resources\Scripts\TweenFadeAlphaAndScale.cs" />
     <Compile Include="Assets\Resources\Suriyun\Scripts\AnimatorController.cs" />
     <Compile Include="Assets\Resources\Suriyun\Scripts\MouseOrbitImproved.cs" />
   </ItemGroup>
