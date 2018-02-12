@@ -1,26 +1,41 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace NonaEngine {
-    public class Block : MonoBehaviour{
+    public class Block : MonoBehaviour {
+        [SerializeField] private Position position;
+        [SerializeField] private BlockType blockType;
+        [SerializeField] private bool isBase;
 
-        #region Focus
-        private static Queue<GameObject> focusObj = new Queue<GameObject>();
-
-        public void Focus(GameObject target, Color col) {
-//            target.GetComponent<MeshRenderer>().material.color = col;
-//            focusObj.Enqueue(target);
+        private void Start() {
+            string objName = this.gameObject.name;
+            objName = objName.Replace("Sand (", "");
+            objName = objName.Replace(")", "");
+            int coreNumber = int.Parse(objName);
+            position.height = coreNumber % MapProperty.maxHeight;
+            position.width = (coreNumber - position.height) / MapProperty.maxHeight;
         }
 
-        public void FocusReset() {
-            while (focusObj.Count > 0) {
-                GameObject go = focusObj.Dequeue();
-                go.GetComponent<MeshRenderer>().material.color = Color.white;
-            }
+        public Position GetPosition() {
+            return position;
         }
 
-        #endregion
+        public BlockType GetBlockType() {
+            return blockType;
+        }
 
+        public void SetBlockType(BlockType type) {
+            blockType = type;
+        }
+
+        public bool IsBase() {
+            return isBase;
+        }
+
+    }
+
+    [System.Serializable]
+    public class Position {
+        public int width;
+        public int height;
     }
 }
