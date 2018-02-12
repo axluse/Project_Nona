@@ -9,8 +9,8 @@ namespace NonaEngine {
         private static Queue<GameObject> focusObj = new Queue<GameObject>();
 
         public void Focus(GameObject target, Color col) {
-            target.GetComponent<MeshRenderer>().material.color = col;
-            focusObj.Enqueue(target);
+//            target.GetComponent<MeshRenderer>().material.color = col;
+//            focusObj.Enqueue(target);
         }
 
         public void FocusReset() {
