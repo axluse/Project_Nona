@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 281094500}
-  m_IndirectSpecularColor: {r: 0.7320051, g: 0.68291706, b: 0.68197715, a: 1}
+  m_IndirectSpecularColor: {r: 0.73200387, g: 0.6829156, b: 0.68197584, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1606,7 +1607,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 0.7205882, g: 0.63813925, b: 0.41327855, a: 1}
+  m_Color: {r: 0.9044118, g: 0.88300174, b: 0.82461077, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2258,7 +2259,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 532152628}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0011291504, y: 0.0005187988, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9996094, y: 0.9996095, z: 0.9996093}
   m_Children: []
   m_Father: {fileID: 620194944}
@@ -3476,12 +3477,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9,
     type: 2}
   m_PrefabInternal: {fileID: 709998494}
---- !u!114 &713172750 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114307153017214850, guid: f837b62f71d223d4783745b137dd758c,
-    type: 2}
-  m_PrefabInternal: {fileID: 955854056}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &733918501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4965,6 +4960,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224321380696187542, guid: f837b62f71d223d4783745b137dd758c,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -5111,6 +5111,31 @@ Prefab:
       value: OnMoving
       objectReference: {fileID: 0}
     - target: {fileID: 114706724590205558, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1158730417}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSummonWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 114704870583143264, guid: f837b62f71d223d4783745b137dd758c,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -6064,12 +6089,6 @@ Transform:
   m_Father: {fileID: 967938318}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1076825129 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114792585021748842, guid: f837b62f71d223d4783745b137dd758c,
-    type: 2}
-  m_PrefabInternal: {fileID: 955854056}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1078451468
 GameObject:
   m_ObjectHideFlags: 0
@@ -6977,11 +6996,12 @@ MonoBehaviour:
   turnText: {fileID: 817616354}
   firstTurnText: {fileID: 836033109}
   phaseSelecter: {fileID: 1579778184}
-  phase_koma: {fileID: 1948314618}
-  phase_hp: {fileID: 1076825129}
-  phase_atk: {fileID: 713172750}
+  phase_koma: {fileID: 0}
+  phase_hp: {fileID: 0}
+  phase_atk: {fileID: 0}
   leftTurn: {fileID: 2140471199}
   rightTurn: {fileID: 532152630}
+  wallObj: {fileID: 189028, guid: daaef79713453fb4b9a6bc4ea65a64f9, type: 2}
   phase: 4
   blockDriver: {fileID: 1158730416}
 --- !u!1 &1190409400
@@ -11329,12 +11349,6 @@ MonoBehaviour:
   eventType: 0
   player1: 0
   player2: 0
---- !u!114 &1948314618 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114574340925552122, guid: f837b62f71d223d4783745b137dd758c,
-    type: 2}
-  m_PrefabInternal: {fileID: 955854056}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1962723176
 GameObject:
   m_ObjectHideFlags: 0
