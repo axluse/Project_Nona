@@ -4,7 +4,10 @@ using UnityEngine;
 using NonaEngine;
 
 public class Map : MonoBehaviour {
+
+    #region 変数
     public List<Block> blocks = new List<Block>();
+    private List<Block> beforeBlocks = new List<Block>();
     public GameObject mapDataParent;
 
     public List<GameObject> player1Base = new List<GameObject>();
@@ -12,6 +15,7 @@ public class Map : MonoBehaviour {
 
     public int maxWidth = 8;
     public int maxHeight = 7;
+    #endregion
 
     private void Awake() {
         MapProperty.maxHeight = maxHeight;
@@ -38,6 +42,8 @@ public class Map : MonoBehaviour {
                 Debug.LogWarning(e);
             }
         }
+
+        beforeBlocks = blocks;
     }
 
     #region Blockメソッド取得
@@ -61,125 +67,52 @@ public class Map : MonoBehaviour {
 
     /// <summary>
     ///  対象プレイヤーの現在位置を基準とした1マス分のベクトルを指定して対象地点の情報を返却します。
-    ///  
-    /// ●ベクトル指定はテンキーに準拠
-    /// 1|2|3
-    /// 4|5|6
-    /// 7|8|9
-    /// 
     /// </summary>
-    public Block GetDecision(int playerNumber, int vector) {
+    public List<Block> GetDecision(int playerNumber) {
         GameObject playerBlock = GetPlayerOnBlock(playerNumber);
         if (playerBlock) {
             Block b = GetBlock(playerBlock);
             Position pos = b.GetPosition();
-            Position findPos = pos;
-            switch (vector) {
-                #region 1
-                case 1:
-                    findPos.height++;
-                    findPos.width++;
-                    if(GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if(ret != null) {
-                            return ret;
-                        }
-                    }
-                    
-                break;
-                #endregion
-                #region 2
-                case 2:
-                    findPos.height++;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 3
-                case 3:
-                    findPos.height++;
-                    findPos.width--;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                break;
-                #endregion
-                #region 4
-                case 4:
-                    findPos.width++;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 5
-                case 5:
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 6
-                case 6:
-                    findPos.width--;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 7
-                case 7:
-                    findPos.height--;
-                    findPos.width++;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 8
-                case 8:
-                    findPos.height--;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
-                #region 9
-                case 9:
-                    findPos.height--;
-                    findPos.width--;
-                    if (GetIsField(findPos)) {
-                        Block ret = GetPosToBlock(findPos);
-                        if (ret != null) {
-                            return ret;
-                        }
-                    }
-                    break;
-                #endregion
+
+            List<Block> returnBlocks = new List<Block>();
+
+            // 上
+            Position findPos = new Position();
+            findPos.height = pos.height + 1;
+            findPos.width = pos.width;
+            if(GetIsField(findPos)) {
+                returnBlocks.Add(GetPosToBlock(findPos));
+                Debug.Log(GetPosToBlock(findPos).gameObject);
             }
-            return null;
+
+            // 左
+            findPos = new Position();
+            findPos.height = pos.height;
+            findPos.width = pos.width + 1;
+            if (GetIsField(findPos)) {
+                returnBlocks.Add(GetPosToBlock(findPos));
+                Debug.Log(GetPosToBlock(findPos).gameObject);
+            }
+
+            // 右
+            findPos = new Position();
+            findPos.height = pos.height;
+            findPos.width = pos.width - 1;
+            if (GetIsField(findPos)) {
+                returnBlocks.Add(GetPosToBlock(findPos));
+                Debug.Log(GetPosToBlock(findPos).gameObject);
+            }
+
+            // 下
+            findPos = new Position();
+            findPos.height = pos.height - 1;
+            findPos.width = pos.width;
+            if (GetIsField(findPos)) {
+                returnBlocks.Add(GetPosToBlock(findPos));
+                Debug.Log(GetPosToBlock(findPos).gameObject);
+            }
+
+            return returnBlocks;
         } else {
             return null;
         }
@@ -235,6 +168,20 @@ public class Map : MonoBehaviour {
             }
         }
         return null;
+    }
+
+    /// <summary>
+    /// 指定位置のBlock情報の元のデータを取得する
+    /// </summary>
+    public Block GetBeforeBlockData(Position target) {
+        int iteration = 0;
+        foreach(Block b in blocks) {
+            if(b.GetPosition() == target) {
+                break;
+            }
+            iteration++;
+        }
+        return beforeBlocks[iteration];
     }
 
 }

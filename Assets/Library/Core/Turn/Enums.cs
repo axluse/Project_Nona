@@ -15,7 +15,17 @@
         Stop,
         Move,
         Attack,
-        Wall
+        Wall,
+        Skill
+    }
+
+    public enum Skill {
+        Damage_5,
+        Heal_5,
+        PowerUP_2,
+        RandomTeleport_Player,
+        RandomTeleport_Enemy,
+        WallBreak
     }
 
     public enum Ability {

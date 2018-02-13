@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using NonaEngine;
+using DG.Tweening;
 
 public class NewGame : MonoBehaviour {
 
+    public Image FadePanel;
     public Map map;
     public GameObject p1_1;
     public GameObject p1_2;
@@ -14,9 +17,16 @@ public class NewGame : MonoBehaviour {
     public GameObject p2_3;
 
     private void Start () {
+        FadePanel.gameObject.SetActive(true);
         if(p1_1 != null) {
             InsertGameData();
         }
+        StartCoroutine(IEStart());
+    }
+
+    private IEnumerator IEStart() {
+        yield return new WaitForSeconds(1f);
+
         // player1を自動ランダム配置
         List<GameObject> p1Data = NewGameSpawn(map.player1Base, p1_1);
         GamePropertys.p1 = p1Data[0];
@@ -30,8 +40,25 @@ public class NewGame : MonoBehaviour {
         GamePropertys.p2.transform.Rotate(0, 180, 0);
         p2Data[1].GetComponent<Block>().SetBlockType(BlockType.OnPlayer2);
 
+        yield return null;
         // ターン追加
         TurnHandler.turn++;
+
+        yield return null;
+
+        DOTween.ToAlpha(
+            () => FadePanel.color,
+            color => FadePanel.color = color,
+            0.0f,
+            1.0f
+        );
+
+        yield return new WaitForSeconds(1.1f);
+
+        // コントロールパネル表示
+        this.GetComponent<NonaDriver>().OnTurnStart();
+
+        FadePanel.gameObject.SetActive(false);
     }
 
     public List<GameObject> NewGameSpawn(List<GameObject> playerBase, GameObject player) {
