@@ -10,6 +10,9 @@ public class NewGame : MonoBehaviour {
     public Image FadePanel;
     public Map map;
     public AudioSource bgmManager;
+    public GameObject csn;
+    public GameObject csn_head_left;
+    public GameObject csn_head_right;
     public GameObject p1_1;
     public GameObject p1_2;
     public GameObject p1_3;
@@ -18,24 +21,69 @@ public class NewGame : MonoBehaviour {
     public GameObject p2_3;
 
     private void Start () {
+        TurnHandler.turnType = TurnHandler.TurnType.player1;
         FadePanel.gameObject.SetActive(true);
         if(p1_1 != null) {
             InsertGameData();
         }
-        StartCoroutine(IEStart());
+        ViewCharaChange();
+    }
+
+    public void ViewCharaChange() {
+        csn.SetActive(true);
+        if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            csn_head_left.SetActive(true);
+            csn_head_right.SetActive(false);
+        } else {
+            csn_head_left.SetActive(false);
+            csn_head_right.SetActive(true);
+        }
+
+    }
+
+    public void OnCharacterSelect(int charaNumber) {
+        if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            GamePropertys.p1_useCh = charaNumber;
+            switch(charaNumber) {
+                case 1:
+                    GamePropertys.p1 = p1_1;
+                    break;
+                case 2:
+                    GamePropertys.p1 = p1_2;
+                    break;
+                case 3:
+                    GamePropertys.p1 = p1_3;
+                    break;
+            }
+            ViewCharaChange();
+        } else {
+            GamePropertys.p2_useCh = charaNumber;
+            switch (charaNumber) {
+                case 1:
+                    GamePropertys.p2 = p2_1;
+                    break;
+                case 2:
+                    GamePropertys.p2 = p2_2;
+                    break;
+                case 3:
+                    GamePropertys.p2 = p2_3;
+                    break;
+            }
+            StartCoroutine(IEStart());
+        }
     }
 
     private IEnumerator IEStart() {
         yield return new WaitForSeconds(1f);
 
         // player1を自動ランダム配置
-        List<GameObject> p1Data = NewGameSpawn(map.player1Base, p1_1);
+        List<GameObject> p1Data = NewGameSpawn(map.player1Base, GamePropertys.p1);
         GamePropertys.p1 = p1Data[0];
         GamePropertys.p1_position = p1Data[1].GetComponent<Block>().GetPosition();
         p1Data[1].GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
 
         // player2を自動ランダム配置
-        List<GameObject> p2Data = NewGameSpawn(map.player2Base, p2_1);
+        List<GameObject> p2Data = NewGameSpawn(map.player2Base, GamePropertys.p2);
         GamePropertys.p2 = p2Data[0];
         GamePropertys.p2_position = p2Data[1].GetComponent<Block>().GetPosition();
         GamePropertys.p2.transform.Rotate(0, 180, 0);

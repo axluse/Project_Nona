@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using NonaEngine;
 using DG.Tweening;
 
@@ -9,39 +10,58 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
 
     #region 変数
     [SerializeField] private Map mapManager;
+
     [SerializeField] private GameObject phaseSelecter;
     [SerializeField] private GameObject characterSelecter;
+    [SerializeField] private GameObject wallObj;
+
     [SerializeField] private Button chara1Btn;
     [SerializeField] private Button chara2Btn;
     [SerializeField] private Button chara3Btn;
     [SerializeField] private Button summonWallBtn;
     [SerializeField] private Button skillBtn;
+    [SerializeField] private Button respawnBtn;
+
     [SerializeField] private TweenFadeAlphaAndScale left;
     [SerializeField] private TweenFadeAlphaAndScale right;
-    [SerializeField] private GameObject wallObj;
 
+    #region フェーズテキスト
     [SerializeField] private Text costText;
     [SerializeField] private Text hpText;
     [SerializeField] private Text atkText;
+    #endregion
 
+    #region ダメージ表示関連
     [SerializeField] private GameObject damageObj;
     [SerializeField] private Text dmgText;
+    #endregion
 
+    #region ゲームオーバー関連
     [SerializeField] private GameObject gameOverLeft;
     [SerializeField] private GameObject gameOverRight;
+    private bool isGameOver = false;
+    #endregion
 
+    #region エフェクト
     [SerializeField] private GameObject se_Damage;
     [SerializeField] private GameObject se_Heal;
     [SerializeField] private GameObject se_Teleport;
+    #endregion
 
+    #region AudioClips
     [SerializeField] private AudioClip batan_1;
     [SerializeField] private AudioClip batan_2;
     [SerializeField] private AudioClip aa;
     [SerializeField] private AudioClip movese;
     [SerializeField] private AudioClip summonWall;
+    #endregion
 
+    #region CashPools
     private List<WallProperty> wallProps = new List<WallProperty>();
+    private TurnEnd turnEndMGR = new TurnEnd();
+    #endregion
 
+    #region Parameters
     private int p1Cost = 0;
     private int p2Cost = 0;
 
@@ -55,25 +75,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     private int p2SkillCost = 3;
 
     public ControllPhase phase = ControllPhase.Stop;
-
-    private TurnEnd turnEndMGR = new TurnEnd();
-
     #endregion
-
-    #region 実装されなかった部分
-    /// <summary>
-    /// Player1の初期フェーズ時のクリックされたオブジェクト
-    /// </summary>
-    public void OnZero1(GameObject target) {
-        Debug.Log("OnZero1:" + target);
-    }
-
-    /// <summary>
-    /// Player2の初期フェーズ時のクリックされたオブジェクト
-    /// </summary>
-    public void OnZero2(GameObject target) {
-        Debug.Log("OnZero2:" + target);
-    }
     #endregion
 
     private void Update() {
@@ -86,24 +88,24 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
                 AddCost(GetPlayingNumber());
                 AddCost(GetPlayingNumber());
             }
+        } else {
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(2)) {
+                BlockEffect.ResetColor();
+                if (phase != ControllPhase.Stop) {
+                    phase = ControllPhase.Stop;
+                    phaseSelecter.SetActive(true);
+                }
+            }
+        }
+
+        if(isGameOver) {
+            if(Input.GetMouseButtonDown(0)) {
+                SceneManager.LoadScene("Demo2");
+            }
         }
     }
 
-    public bool IsPlayer1Turn() {
-        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public int GetPlayingNumber() {
-        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
+    #region メイン操作部分
 
     /// <summary>
     /// Player1の通常フェーズ時のクリックされたオブジェクト
@@ -169,6 +171,216 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         }
     }
 
+    #endregion
+
+    #region UX/UI操作部分
+    /// <summary>
+    /// コントローラーからの入力を受付
+    /// </summary>
+    public void OnController(int mode) {
+        phaseSelecter.SetActive(false);
+        switch (mode) {
+            case 1:
+                phase = ControllPhase.Move;
+                #region 対象ブロックの色を変更する
+                int playerNumber = 1;
+                if (TurnHandler.turnType == TurnHandler.TurnType.player2) {
+                    playerNumber = 2;
+                }
+
+                List<Block> cashes = mapManager.GetDecision(playerNumber);
+                foreach (Block b in cashes) {
+                    if (b.GetBlockType() == BlockType.Field) {
+                        BlockEffect.ChangeColor(b.gameObject, Color.green);
+                    } else if (b.GetBlockType() == BlockType.OnPlayer1 ||
+                                  b.GetBlockType() == BlockType.OnPlayer2) {
+                        BlockEffect.ChangeColor(b.gameObject, Color.magenta);
+                    }
+                }
+                #endregion
+                break;
+            case 2:
+                phase = ControllPhase.Wall;
+                break;
+            case 3:
+                phase = ControllPhase.Skill;
+                Skill skill = GetSkill();
+                UseSkill(skill);
+                break;
+            case 4:
+                phase = ControllPhase.Skill;
+                ViewCharacterSelecter();
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 指定キャラクター番号にキャラを変更
+    /// </summary>
+    public void OnCharacterChange(int number) {
+        characterSelecter.SetActive(false);
+        if (IsPlayer1Turn()) {
+            GamePropertys.p1_useCh = number;
+            switch (number) {
+                case 1:
+                    GamePropertys.p1 = GamePropertys.p1_ch1;
+                    break;
+                case 2:
+                    GamePropertys.p1 = GamePropertys.p1_ch2;
+                    break;
+                case 3:
+                    GamePropertys.p1 = GamePropertys.p1_ch3;
+                    break;
+            }
+            Character cht = GamePropertys.p1.GetComponent<Character>();
+            p1Hp = cht.hp;
+            p1Atk = cht.atk;
+
+        } else {
+            GamePropertys.p2_useCh = number;
+            switch (number) {
+                case 1:
+                    GamePropertys.p2 = GamePropertys.p2_ch1;
+                    break;
+                case 2:
+                    GamePropertys.p2 = GamePropertys.p2_ch2;
+                    break;
+                case 3:
+                    GamePropertys.p2 = GamePropertys.p2_ch3;
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// キャラセレクターの表示
+    /// </summary>
+    public void ViewCharacterSelecter() {
+        characterSelecter.SetActive(true);
+        chara1Btn.interactable = true;
+        chara2Btn.interactable = true;
+        chara3Btn.interactable = true;
+        if (IsPlayer1Turn()) {
+            if(GamePropertys.p1ch1_die) {
+                chara1Btn.interactable = false;
+            }
+            if (GamePropertys.p1ch2_die) {
+                chara2Btn.interactable = false;
+            }
+            if (GamePropertys.p1ch3_die) {
+                chara3Btn.interactable = false;
+            }
+            switch (GamePropertys.p1_useCh) {
+                case 1:
+                    chara1Btn.interactable = false;
+                    break;
+                case 2:
+                    chara2Btn.interactable = false;
+                    break;
+                case 3:
+                    chara3Btn.interactable = false;
+                    break;
+            }
+        } 
+        else {
+            if (GamePropertys.p2ch1_die) {
+                chara1Btn.interactable = false;
+            }
+            if (GamePropertys.p2ch2_die) {
+                chara2Btn.interactable = false;
+            }
+            if (GamePropertys.p2ch3_die) {
+                chara3Btn.interactable = false;
+            }
+            switch (GamePropertys.p2_useCh) {
+                case 1:
+                    chara1Btn.interactable = false;
+                    break;
+                case 2:
+                    chara2Btn.interactable = false;
+                    break;
+                case 3:
+                    chara3Btn.interactable = false;
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// フェーズセレクターの画面描画処理
+    /// </summary>
+    public void PhaseSelecterViewDriver() {
+        // P1用
+        if (IsPlayer1Turn()) {
+            left.StartTween(); 
+            costText.text = p1Cost.ToString();
+            hpText.text = p1Hp.ToString();
+            atkText.text = p1Atk.ToString();
+
+        // p2用
+        } else {
+            right.StartTween();
+            costText.text = p2Cost.ToString();
+            hpText.text = p2Hp.ToString();
+            atkText.text = p2Atk.ToString();
+        }
+
+        // 壁生成表示切替
+        if (GetCost() < 3) {
+            summonWallBtn.interactable = false;
+        } else {
+            summonWallBtn.interactable = true;
+        }
+
+        // スキル表示切替
+        if(GetCost() < GetSkillCost()) {
+            skillBtn.interactable = false;
+        } else {
+            skillBtn.interactable = true;
+        }
+
+        // リスポーン表示切替
+        int partyQty = GamePropertys.GetPartyCount(GetPlayingNumber());
+        if (partyQty < 2) {
+            respawnBtn.interactable = true;
+        } else {
+            respawnBtn.interactable = true;
+        }
+    }
+
+    #region Damage表示
+    public void DamageUI(GameObject damageTarget, int damageNum) {
+        Debug.Log(TurnHandler.turn + ":" + TurnHandler.turnType.ToString());
+
+        int dmg = damageNum;
+
+        Color dmgTextCol = Color.red;
+
+        // マイナス値はヒールとして判定
+        if (dmg < 0) {
+            dmgTextCol = Color.green;
+        }
+
+        dmgTextCol.a = 0;
+
+        // 絶対値
+        dmg = Mathf.Abs(dmg);
+
+        dmgText.color = dmgTextCol;
+
+        damageObj.transform.parent = damageTarget.transform;
+        damageObj.transform.localPosition = Vector3.zero;
+
+        // DamageUI 表示
+        dmgText.text = dmg.ToString();
+        dmgText.GetComponent<TweenFadeAlphaAndScale2>().StartTween();
+    }
+
+    #endregion
+
+    #endregion
+
+    #region API処理
     /// <summary>
     /// コスト追加
     /// </summary>
@@ -202,6 +414,91 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     }
 
     /// <summary>
+    /// 使用中のキャラクターのスキルコスト取得
+    /// </summary>
+    /// <returns></returns>
+    public int GetSkillCost() {
+        return GetPlayerObj().GetComponent<Character>().skillCost;
+    }
+
+    /// <summary>
+    /// 使用中キャラクターのスキル取得
+    /// </summary>
+    /// <returns></returns>
+    public Skill GetSkill() {
+        if(IsPlayer1Turn()) {
+            return GamePropertys.p1.GetComponent<Character>().skill;
+        } else {
+            return GamePropertys.p2.GetComponent<Character>().skill;
+        }
+    }
+
+    /// <summary>
+    /// プレイヤーのコストを取得
+    /// </summary>
+    public int GetCost() {
+        if(IsPlayer1Turn()) {
+            return p1Cost;
+        } else {
+            return p2Cost;
+        }
+    }
+
+    /// <summary>
+    /// 現在生存パーティー数を確認
+    /// </summary>
+    public int GetPartyQty() {
+        return GamePropertys.GetPartyCount(GetPlayingNumber());
+    }
+
+    /// <summary>
+    /// 使用中のキャラクターを取得
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetPlayerObj() {
+        if(IsPlayer1Turn()) {
+            return GamePropertys.p1;
+        } else {
+            return GamePropertys.p2;
+        }
+    }
+
+    /// <summary>
+    /// 敵キャラ取得
+    /// </summary>
+    public GameObject GetEnemyObj() {
+        if(IsPlayer1Turn()) {
+            return GamePropertys.p2;
+        } else {
+            return GamePropertys.p1;
+        }
+    }
+
+    /// <summary>
+    /// P1のターンかどうか
+    /// </summary>
+    /// <returns></returns>
+    public bool IsPlayer1Turn() {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// プレイヤー番号取得
+    /// </summary>
+    /// <returns></returns>
+    public int GetPlayingNumber() {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
+
+    /// <summary>
     /// 2ブロック間の移動歩数を測定
     /// </summary>
     /// <param name="a">地点A</param>
@@ -212,135 +509,10 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     }
 
     /// <summary>
-    /// コントローラーからの入力を受付
-    /// </summary>
-    public void OnController(int mode) {
-        phaseSelecter.SetActive(false);
-        switch (mode) {
-            case 1:
-                phase = ControllPhase.Move;
-                #region 対象ブロックの色を変更する
-                int playerNumber = 1;
-                if(TurnHandler.turnType == TurnHandler.TurnType.player2) {
-                     playerNumber = 2;
-                }
-
-                List<Block> cashes = mapManager.GetDecision(playerNumber);
-                foreach (Block b in cashes) {
-                    if (b.GetBlockType() == BlockType.Field) {
-                        BlockEffect.ChangeColor(b.gameObject, Color.green);
-                    } else if (b.GetBlockType() == BlockType.OnPlayer1 ||
-                                  b.GetBlockType() == BlockType.OnPlayer2) {
-                        BlockEffect.ChangeColor(b.gameObject, Color.magenta);
-                    }
-                }
-                #endregion
-                break;
-            case 2:
-                phase = ControllPhase.Wall;
-                break;
-            case 3:
-                Skill skill = Skill.Damage_5;
-                if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
-                    skill = GamePropertys.p1.GetComponent<Character>().skill;
-                } else {
-                    skill = GamePropertys.p2.GetComponent<Character>().skill;
-                }
-                UseSkill(skill);
-                break;
-            case 4:
-
-                Respawn();
-                break;
-        }
-    }
-
-    /// <summary>
-    /// 指定キャラクター番号にキャラを変更
-    /// </summary>
-    public void OnCharacterChange(int number) {
-        if(IsPlayer1Turn()) {
-            GamePropertys.p1_useCh = number;
-            switch (number) {
-                case 1:
-                    GamePropertys.p1 = GamePropertys.p1_ch1;
-                    break;
-                case 2:
-                    GamePropertys.p1 = GamePropertys.p1_ch2;
-                    break;
-                case 3:
-                    GamePropertys.p1 = GamePropertys.p1_ch3;
-                    break;
-            }
-            Character cht= GamePropertys.p1.GetComponent<Character>();
-            p1Hp = cht.hp;
-            p1Atk = cht.atk;
-            
-        } else {
-            GamePropertys.p2_useCh = number;
-            switch (number) {
-                case 1:
-                    GamePropertys.p2 = GamePropertys.p2_ch1;
-                    break;
-                case 2:
-                    GamePropertys.p2 = GamePropertys.p2_ch2;
-                    break;
-                case 3:
-                    GamePropertys.p2 = GamePropertys.p2_ch3;
-                    break;
-            }
-        }
-    }
-
-    /// <summary>
-    /// ターン開始処理
-    /// </summary>
-    public void OnTurnStart() {
-        // ３ターン過ぎた壁の消滅
-        for(int i = 0; i < wallProps.Count; ++i) {
-            wallProps[i].turn--;
-            if (wallProps[i].turn <= 0) {
-                StartCoroutine(IEDieWall(wallProps[i]));
-                wallProps.RemoveAt(i);
-            }            
-        }
-
-        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
-            left.StartTween();
-            costText.text = p1Cost.ToString();
-            // コストが足りない場合は壁生成を使えないようにする
-            if(p1Cost < 3) {
-                summonWallBtn.interactable = false;
-                skillBtn.interactable = false;
-            } else {
-                summonWallBtn.interactable = true;
-                skillBtn.interactable = true;
-            }
-            hpText.text = p1Hp.ToString();
-            atkText.text = p1Atk.ToString();
-
-        } else if (TurnHandler.turnType == TurnHandler.TurnType.player2) {
-            right.StartTween();
-            costText.text = p2Cost.ToString();
-            // コストが足りない場合は壁生成を使えないようにする
-            if (p2Cost < 3) {
-                summonWallBtn.interactable = false;
-                skillBtn.interactable = false;
-            } else {
-                summonWallBtn.interactable = true;
-                skillBtn.interactable = true;
-            }
-            hpText.text = p2Hp.ToString();
-            atkText.text = p2Atk.ToString();
-        }
-        StartCoroutine(IETurnStart());
-    }
-
-    /// <summary>
     /// キャラクターを設定する
     /// </summary>
-    public void SetCharacter(int playerNumber,Character chara) {
-        if(playerNumber == 1) {
+    public void SetCharacter(int playerNumber, Character chara) {
+        if (playerNumber == 1) {
             p1Hp = chara.hp;
             p1Atk = chara.atk;
         } else {
@@ -355,16 +527,16 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     public bool Battle() {
         int dmg = 0;
         bool ret = false;
-        if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
             dmg = p1Atk;
-            
+
             // ATK Damageボーナス判定
-            if(Random.Range(0,100) > 70) {
+            if (Random.Range(0, 100) > 70) {
                 dmg += Random.Range(0, 3);
             }
 
             p2Hp -= dmg;
-            if(p2Hp <= 0) {
+            if (p2Hp <= 0) {
                 p2Hp = 0;
                 ret = true;
             }
@@ -428,15 +600,19 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     }
 
     public void GameOver() {
-
+        if(IsPlayer1Turn()) {
+            gameOverRight.GetComponent<TweenFadeAlphaAndScale3>().StartTween();
+        } else {
+            gameOverLeft.GetComponent<TweenFadeAlphaAndScale3>().StartTween();
+        }
     }
 
     public void Teleport(GameObject target) {
-        if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
             mapManager.GetPlayerOnBlock(1).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
             GamePropertys.p1.transform.position = target.transform.position;
-            GamePropertys.p1.transform.Translate(0,0.5f,0);
+            GamePropertys.p1.transform.Translate(0, 0.5f, 0);
         } else {
             mapManager.GetPlayerOnBlock(2).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer2);
@@ -445,17 +621,12 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         }
     }
 
-    public void TurnEnd() {
-        turnEndMGR.OnStart();
-        OnTurnStart();
-    }
-
     /// <summary>
     /// 出撃中キャラクターを死亡状態に切り替え
     /// </summary>
-    public void Die() {
-        if(IsPlayer1Turn()) {
-            switch(GamePropertys.p1_useCh) {
+    public void Die(bool autoTurnControll = true) {
+        if (IsPlayer1Turn()) {
+            switch (GamePropertys.p1_useCh) {
                 case 1:
                     GamePropertys.p1ch1_die = true;
                     break;
@@ -479,6 +650,14 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
                     break;
             }
         }
+        if(autoTurnControll) {
+            // 死亡時のパーティー人数取得
+            if (GetPartyQty() <= 0) {
+                GameOver();
+            } else {
+                TurnEnd();
+            }
+        }
     }
 
     /// <summary>
@@ -491,11 +670,6 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             Teleport(mapManager.player2Base[Random.Range(0, mapManager.player2Base.Count)]);
         }
         TurnEnd();
-    }
-
-    private IEnumerator IETurnStart() {
-        yield return new WaitForSeconds(2.5f);
-        phaseSelecter.SetActive(true);
     }
 
     /// <summary>
@@ -511,8 +685,8 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         if (TurnHandler.turnType == TurnHandler.TurnType.player2) {
             mapManager.GetPlayerOnBlock(2).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer2);
-        
-        // Player1 Move
+
+            // Player1 Move
         } else {
             mapManager.GetPlayerOnBlock(1).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
@@ -545,11 +719,11 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     public void SummonWall(GameObject target) {
         Block block = mapManager.GetBlock(target);
         // 既に移動不可ゾーンかプレイヤーが存在する場合は生成不可
-        if(block.GetBlockType() != BlockType.Wall && block.GetBlockType() != BlockType.OnPlayer1 && block.GetBlockType() != BlockType.OnPlayer2 && block.GetBlockType() != BlockType.Water) {
+        if (block.GetBlockType() != BlockType.Wall && block.GetBlockType() != BlockType.OnPlayer1 && block.GetBlockType() != BlockType.OnPlayer2 && block.GetBlockType() != BlockType.Water) {
             ControllStop();
             StartCoroutine(IESummonWall(target));
-            
-        } 
+
+        }
     }
 
     private IEnumerator IESummonWall(GameObject target) {
@@ -597,7 +771,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
 
     #region 攻撃
     public void Attack() {
-        if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
             StartCoroutine(IEAttack(GamePropertys.p1, GamePropertys.p2));
         } else {
             StartCoroutine(IEAttack(GamePropertys.p2, GamePropertys.p1));
@@ -642,12 +816,12 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
 
     #region スキル
     public void UseSkill(Skill skill) {
-        switch(skill) {
+        switch (skill) {
             case Skill.Damage_5:
-                StartCoroutine(IESkillDamage(15, GamePropertys.p2));
+                StartCoroutine(IESkillDamage(5, GamePropertys.p2));
                 break;
             case Skill.Heal_5:
-
+                StartCoroutine(IESkillDamage(-5, GamePropertys.p2));
                 break;
             case Skill.RandomTeleport_Enemy:
                 break;
@@ -673,38 +847,59 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             OnTurnStart();
         }
     }
-    
-    
+
+
     #endregion
 
-    #region Damage表示
-    public void DamageUI(GameObject damageTarget, int damageNum) {
-        Debug.Log(TurnHandler.turn + ":" + TurnHandler.turnType.ToString());
+    #endregion
 
-        int dmg = damageNum;
+    #region ターン管理
 
-        Color dmgTextCol = Color.red;
-
-        // マイナス値はヒールとして判定
-        if (dmg < 0) {
-            dmgTextCol = Color.green;
+    /// <summary>
+    /// ターン開始処理
+    /// </summary>
+    public void OnTurnStart() {
+        // ３ターン過ぎた壁の消滅
+        for (int i = 0; i < wallProps.Count; ++i) {
+            wallProps[i].turn--;
+            if (wallProps[i].turn <= 0) {
+                StartCoroutine(IEDieWall(wallProps[i]));
+                wallProps.RemoveAt(i);
+            }
         }
 
-        dmgTextCol.a = 0;
-
-        // 絶対値
-        dmg = Mathf.Abs(dmg);
-
-        dmgText.color = dmgTextCol;
-
-        damageObj.transform.parent = damageTarget.transform;
-        damageObj.transform.localPosition = Vector3.zero;
-
-        // DamageUI 表示
-        dmgText.text = dmg.ToString();
-        dmgText.GetComponent<TweenFadeAlphaAndScale2>().StartTween();
+        PhaseSelecterViewDriver();
+        StartCoroutine(IETurnStart());
     }
 
+    /// <summary>
+    /// ターンエンド処理
+    /// </summary>
+    public void TurnEnd() {
+        turnEndMGR.OnStart();
+        OnTurnStart();
+    }
+
+    private IEnumerator IETurnStart() {
+        yield return new WaitForSeconds(2.5f);
+        phaseSelecter.SetActive(true);
+    }
+    #endregion
+
+    #region 実装されなかった部分
+    /// <summary>
+    /// Player1の初期フェーズ時のクリックされたオブジェクト
+    /// </summary>
+    public void OnZero1(GameObject target) {
+        Debug.Log("OnZero1:" + target);
+    }
+
+    /// <summary>
+    /// Player2の初期フェーズ時のクリックされたオブジェクト
+    /// </summary>
+    public void OnZero2(GameObject target) {
+        Debug.Log("OnZero2:" + target);
+    }
     #endregion
 
 }
