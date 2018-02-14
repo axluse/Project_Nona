@@ -17,8 +17,10 @@ namespace NonaEngine {
         }
 
         public static void ResetColor() {
-            foreach(GameObject go in colorChangedQueue) {
-                ChangeColor(go, Color.white);
+            GameObject go = null;
+            while (colorChangedQueue.Count > 0) {
+                go = colorChangedQueue.Dequeue();
+                go.GetComponent<MeshRenderer>().material.color = Color.white;
             }
         }
 

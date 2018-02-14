@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using NonaEngine;
+
 public class Character : MonoBehaviour {
     public int hp = 10;
     public int atk = 4;
@@ -7,4 +8,16 @@ public class Character : MonoBehaviour {
     public Sprite charaImg;
     public string skillName = "5ダメージ与える";
     public Skill skill = Skill.Damage_5;
+
+    public int GetHP() {
+        return hp;
+    }
+
+    public int GetATK() {
+        return atk;
+    }
+
+    public Skill GetSkill() {
+        return skill;
+    }
 }

@@ -32,16 +32,20 @@ public class Map : MonoBehaviour {
     public void CreateData() {
         int iteration = 0;
         Transform cash = mapDataParent.transform.GetChild(0);
-
-        while (cash = mapDataParent.transform.GetChild(iteration)) {
-            try {
-                Block b = cash.GetComponent<Block>();
-                blocks.Add(b);
-                ++iteration;
-            } catch (System.Exception e) {
-                Debug.LogWarning(e);
+        try {
+           while (cash = mapDataParent.transform.GetChild(iteration)) {
+                try {
+                    Block b = cash.GetComponent<Block>();
+                    blocks.Add(b);
+                    ++iteration;
+                } catch (System.Exception e) {
+                    Debug.LogWarning(e);
+                }
             }
+        } finally {
+
         }
+
 
         beforeBlocks = blocks;
     }
@@ -80,9 +84,8 @@ public class Map : MonoBehaviour {
             Position findPos = new Position();
             findPos.height = pos.height + 1;
             findPos.width = pos.width;
-            if(GetIsField(findPos)) {
+            if (GetIsField(findPos)) {
                 returnBlocks.Add(GetPosToBlock(findPos));
-                Debug.Log(GetPosToBlock(findPos).gameObject);
             }
 
             // 左
@@ -91,7 +94,6 @@ public class Map : MonoBehaviour {
             findPos.width = pos.width + 1;
             if (GetIsField(findPos)) {
                 returnBlocks.Add(GetPosToBlock(findPos));
-                Debug.Log(GetPosToBlock(findPos).gameObject);
             }
 
             // 右
@@ -100,7 +102,6 @@ public class Map : MonoBehaviour {
             findPos.width = pos.width - 1;
             if (GetIsField(findPos)) {
                 returnBlocks.Add(GetPosToBlock(findPos));
-                Debug.Log(GetPosToBlock(findPos).gameObject);
             }
 
             // 下
@@ -109,7 +110,6 @@ public class Map : MonoBehaviour {
             findPos.width = pos.width;
             if (GetIsField(findPos)) {
                 returnBlocks.Add(GetPosToBlock(findPos));
-                Debug.Log(GetPosToBlock(findPos).gameObject);
             }
 
             return returnBlocks;
@@ -125,13 +125,13 @@ public class Map : MonoBehaviour {
         if(pos.height >= maxHeight) {
             return false;
         }
-        if(pos.height <= 0) {
+        if(pos.height < 0) {
             return false;
         }
         if(pos.width >= maxWidth) {
             return false;
         }
-        if(pos.width <= 0) {
+        if(pos.width < 0) {
             return false;
         }
         return true;

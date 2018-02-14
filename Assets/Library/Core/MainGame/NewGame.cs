@@ -9,6 +9,7 @@ public class NewGame : MonoBehaviour {
 
     public Image FadePanel;
     public Map map;
+    public AudioSource bgmManager;
     public GameObject p1_1;
     public GameObject p1_2;
     public GameObject p1_3;
@@ -54,6 +55,9 @@ public class NewGame : MonoBehaviour {
         );
 
         yield return new WaitForSeconds(1.1f);
+
+        // 曲再生
+        bgmManager.Play();
 
         // コントロールパネル表示
         this.GetComponent<NonaDriver>().OnTurnStart();
