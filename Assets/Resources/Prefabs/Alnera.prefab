@@ -6426,8 +6426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 12
-  atk: 1
-  skillCost: 3
+  atk: 2
+  skillCost: 2
   charaImg: {fileID: 21300000, guid: 1ec15426bf22a5b42962d3ceb39ade93, type: 3}
   skillName: 
   skill: 1

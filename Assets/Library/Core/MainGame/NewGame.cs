@@ -42,7 +42,9 @@ public class NewGame : MonoBehaviour {
     }
 
     public void OnCharacterSelect(int charaNumber) {
+        csn.SetActive(false);
         if(TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            Debug.Log("aaaa");
             GamePropertys.p1_useCh = charaNumber;
             switch(charaNumber) {
                 case 1:
@@ -55,6 +57,7 @@ public class NewGame : MonoBehaviour {
                     GamePropertys.p1 = p1_3;
                     break;
             }
+            TurnHandler.turnType = TurnHandler.TurnType.player2;
             ViewCharaChange();
         } else {
             GamePropertys.p2_useCh = charaNumber;
@@ -92,6 +95,7 @@ public class NewGame : MonoBehaviour {
         yield return null;
         // ターン追加
         TurnHandler.turn++;
+        TurnHandler.turnType = TurnHandler.TurnType.player1;
 
         yield return null;
 
@@ -106,6 +110,9 @@ public class NewGame : MonoBehaviour {
 
         // 曲再生
         bgmManager.Play();
+
+        //パラメーター更新
+        GetComponent<NonaDriver>().UpdateParam();
 
         // コントロールパネル表示
         this.GetComponent<NonaDriver>().OnTurnStart();

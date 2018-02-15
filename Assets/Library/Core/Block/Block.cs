@@ -5,6 +5,7 @@ namespace NonaEngine {
         [SerializeField] private Position position;
         [SerializeField] private BlockType blockType;
         [SerializeField] private bool isBase;
+        public TurnHandler.TurnType have;
 
         private void Start() {
             string objName = this.gameObject.name;

@@ -25,6 +25,8 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     [SerializeField] private TweenFadeAlphaAndScale left;
     [SerializeField] private TweenFadeAlphaAndScale right;
 
+    private bool isDie = false;
+
     #region フェーズテキスト
     [SerializeField] private Text costText;
     [SerializeField] private Text hpText;
@@ -100,7 +102,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
 
         if(isGameOver) {
             if(Input.GetMouseButtonDown(0)) {
-                SceneManager.LoadScene("Demo2");
+                SceneManager.LoadScene("Demo 2");
             }
         }
     }
@@ -151,8 +153,13 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
                     } else {
                         Move(GamePropertys.p2, target);
                     }
-                    
-                    turnEndMGR.OnStart();
+
+                    // 勝敗☑
+                    if (IsEnemyBase(target, GetPlayingNumber())) {
+                        Win();
+                    } else {
+                        turnEndMGR.OnStart();
+                    }
 
                 // 指定ポジションに敵プレイヤーが存在する場合は攻撃モードに移行
                 } else if (target.GetComponent<Block>().GetBlockType() == BlockType.OnPlayer2 || target.GetComponent<Block>().GetBlockType() == BlockType.OnPlayer1) {
@@ -209,7 +216,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
                 break;
             case 4:
                 phase = ControllPhase.Skill;
-                ViewCharacterSelecter();
+                Respawn();
                 break;
         }
     }
@@ -220,6 +227,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     public void OnCharacterChange(int number) {
         characterSelecter.SetActive(false);
         if (IsPlayer1Turn()) {
+            Debug.Log("P1キャラチェンジ");
             GamePropertys.p1_useCh = number;
             switch (number) {
                 case 1:
@@ -237,6 +245,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             p1Atk = cht.atk;
 
         } else {
+            Debug.Log("P2キャラチェンジ");
             GamePropertys.p2_useCh = number;
             switch (number) {
                 case 1:
@@ -250,17 +259,39 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
                     break;
             }
         }
+
+        if(isDie) {
+            isDie = false;
+            PhaseSelecterViewDriver();
+        }
+
     }
 
     /// <summary>
     /// キャラセレクターの表示
     /// </summary>
     public void ViewCharacterSelecter() {
+        Debug.Log(TurnHandler.turnType.ToString());
+        bool selecter = false;
+        if(isDie) {
+            if(!IsPlayer1Turn()) {
+                selecter = true;
+            } else {
+                selecter = false;
+            }
+        } else {
+            if (IsPlayer1Turn()) {
+                selecter = true;
+            } else {
+                selecter = false;
+            }
+        }
+
         characterSelecter.SetActive(true);
         chara1Btn.interactable = true;
         chara2Btn.interactable = true;
         chara3Btn.interactable = true;
-        if (IsPlayer1Turn()) {
+        if (selecter) {
             if(GamePropertys.p1ch1_die) {
                 chara1Btn.interactable = false;
             }
@@ -310,41 +341,51 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     /// フェーズセレクターの画面描画処理
     /// </summary>
     public void PhaseSelecterViewDriver() {
-        // P1用
-        if (IsPlayer1Turn()) {
-            left.StartTween(); 
-            costText.text = p1Cost.ToString();
-            hpText.text = p1Hp.ToString();
-            atkText.text = p1Atk.ToString();
 
-        // p2用
+        if(isDie) {
+            if (IsPlayer1Turn()) {
+                left.StartTween();
+            } else {
+                right.StartTween();
+            }
+                ViewCharacterSelecter();
         } else {
-            right.StartTween();
-            costText.text = p2Cost.ToString();
-            hpText.text = p2Hp.ToString();
-            atkText.text = p2Atk.ToString();
-        }
+            // P1用
+            if (IsPlayer1Turn()) {
+                left.StartTween();
+                costText.text = p1Cost.ToString();
+                hpText.text = p1Hp.ToString();
+                atkText.text = p1Atk.ToString();
 
-        // 壁生成表示切替
-        if (GetCost() < 3) {
-            summonWallBtn.interactable = false;
-        } else {
-            summonWallBtn.interactable = true;
-        }
+                // p2用
+            } else {
+                right.StartTween();
+                costText.text = p2Cost.ToString();
+                hpText.text = p2Hp.ToString();
+                atkText.text = p2Atk.ToString();
+            }
 
-        // スキル表示切替
-        if(GetCost() < GetSkillCost()) {
-            skillBtn.interactable = false;
-        } else {
-            skillBtn.interactable = true;
-        }
+            // 壁生成表示切替
+            if (GetCost() < 3) {
+                summonWallBtn.interactable = false;
+            } else {
+                summonWallBtn.interactable = true;
+            }
 
-        // リスポーン表示切替
-        int partyQty = GamePropertys.GetPartyCount(GetPlayingNumber());
-        if (partyQty < 2) {
-            respawnBtn.interactable = true;
-        } else {
-            respawnBtn.interactable = true;
+            // スキル表示切替
+            if (GetCost() < GetSkillCost()) {
+                skillBtn.interactable = false;
+            } else {
+                skillBtn.interactable = true;
+            }
+
+            // リスポーン表示切替
+            int partyQty = GamePropertys.GetPartyCount(GetPlayingNumber());
+            if (partyQty < 2) {
+                respawnBtn.interactable = true;
+            } else {
+                respawnBtn.interactable = true;
+            }
         }
     }
 
@@ -392,6 +433,35 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         }
     }
     
+    public bool IsEnemyBase (GameObject target, int playerNumber) {
+        Debug.Log(playerNumber);
+        if (target.GetComponent<Block>().IsBase()) {
+            if (playerNumber == 1) {
+                if (target.GetComponent<Block>().have == TurnHandler.TurnType.player2) {
+                    return true;
+                }
+                return false;
+            } else {
+                if (target.GetComponent<Block>().have == TurnHandler.TurnType.player1) {
+                    return true;
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void UpdateParam() {
+        Character c = GetPlayerObj().GetComponent<Character>();
+        p1Atk = c.atk;
+        p1Hp = c.hp;
+
+        c = GetEnemyObj().GetComponent<Character>();
+        p2Atk = c.atk;
+        p2Hp = c.hp;
+        
+    }
+
     /// <summary>
     /// コスト使用
     /// </summary>
@@ -442,6 +512,15 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         } else {
             return p2Cost;
         }
+    }
+
+    private Position CreateRandomPos() {
+        int RanHeight = Random.Range(0, (mapManager.maxHeight - 1));
+        int RanWidth = Random.Range(3, 6);
+        Position targetPos = new Position();
+        targetPos.height = RanHeight;
+        targetPos.width = RanWidth;
+        return targetPos;
     }
 
     /// <summary>
@@ -564,32 +643,72 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     }
 
     public bool Damage(int num) {
+        bool hanten = false;
+        if(num < 0) {
+            hanten = true;
+        }
         if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
-            p2Hp -= num;
-            DamageUI(GamePropertys.p2, num);
-            se_Damage.transform.parent = GamePropertys.p2.transform;
+            
+            if(hanten) {
+                p1Hp -= num;
+                DamageUI(GamePropertys.p1, num);
+                se_Damage.transform.parent = GamePropertys.p1.transform;
+            } else {
+                p2Hp -= num;
+                DamageUI(GamePropertys.p2, num);
+                se_Damage.transform.parent = GamePropertys.p2.transform;
+            }
             se_Damage.transform.localPosition = Vector3.zero;
             se_Damage.transform.Translate(0, 0.5f, 0);
             se_Damage.GetComponent<ParticleSystem>().Stop();
             se_Damage.GetComponent<ParticleSystem>().Play();
-            se_Damage.GetComponent<AudioSource>().Play();
-            if (p2Hp <= 0) {
-                p2Hp = 0;
-                return true;
+            if(num < 0) {
+                this.GetComponent<AudioSource>().PlayOneShot(summonWall);
+            } else {
+                se_Damage.GetComponent<AudioSource>().Play();
+            }
+            if(hanten) {
+                if (p1Hp <= 0) {
+                    p1Hp = 0;
+                    return true;
+                }
+            } else {
+                if (p2Hp <= 0) {
+                    p2Hp = 0;
+                    return true;
+                }
             }
             return false;
         } else {
-            p1Hp -= num;
-            DamageUI(GamePropertys.p1, num);
-            se_Damage.transform.parent = GamePropertys.p1.transform;
+            
+            if (!hanten) {
+                p1Hp -= num;
+                DamageUI(GamePropertys.p1, num);
+                se_Damage.transform.parent = GamePropertys.p1.transform;
+            } else {
+                p2Hp -= num;
+                DamageUI(GamePropertys.p2, num);
+                se_Damage.transform.parent = GamePropertys.p2.transform;
+            }
             se_Damage.transform.localPosition = Vector3.zero;
             se_Damage.transform.Translate(0, 0.5f, 0);
             se_Damage.GetComponent<ParticleSystem>().Stop();
             se_Damage.GetComponent<ParticleSystem>().Play();
-            se_Damage.GetComponent<AudioSource>().Play();
-            if (p1Hp <= 0) {
-                p1Hp = 0;
-                return true;
+            if (num < 0) {
+                this.GetComponent<AudioSource>().PlayOneShot(summonWall);
+            } else {
+                se_Damage.GetComponent<AudioSource>().Play();
+            }
+            if (!hanten) {
+                if (p1Hp <= 0) {
+                    p1Hp = 0;
+                    return true;
+                }
+            } else {
+                if (p2Hp <= 0) {
+                    p2Hp = 0;
+                    return true;
+                }
             }
             return false;
         }
@@ -605,10 +724,34 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
         } else {
             gameOverLeft.GetComponent<TweenFadeAlphaAndScale3>().StartTween();
         }
+        isGameOver = true;
+    }
+
+    public void Win() {
+        if (!IsPlayer1Turn()) {
+            gameOverRight.GetComponent<TweenFadeAlphaAndScale3>().StartTween();
+        } else {
+            gameOverLeft.GetComponent<TweenFadeAlphaAndScale3>().StartTween();
+        }
+        isGameOver = true;
     }
 
     public void Teleport(GameObject target) {
         if (TurnHandler.turnType == TurnHandler.TurnType.player1) {
+            mapManager.GetPlayerOnBlock(1).GetComponent<Block>().SetBlockType(BlockType.Field);
+            target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
+            GamePropertys.p1.transform.position = target.transform.position;
+            GamePropertys.p1.transform.Translate(0, 0.5f, 0);
+        } else {
+            mapManager.GetPlayerOnBlock(2).GetComponent<Block>().SetBlockType(BlockType.Field);
+            target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer2);
+            GamePropertys.p2.transform.position = target.transform.position;
+            GamePropertys.p2.transform.Translate(0, 0.5f, 0);
+        }
+    }
+
+    public void TeleportEnemy(GameObject target) {
+        if (TurnHandler.turnType == TurnHandler.TurnType.player2) {
             mapManager.GetPlayerOnBlock(1).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
             GamePropertys.p1.transform.position = target.transform.position;
@@ -661,6 +804,46 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     }
 
     /// <summary>
+    /// 敵キャラクターを死亡状態に切り替え
+    /// </summary>
+    public void Kill(bool autoTurnControll = true) {
+        isDie = true;
+        if (!IsPlayer1Turn()) {
+            switch (GamePropertys.p1_useCh) {
+                case 1:
+                    GamePropertys.p1ch1_die = true;
+                    break;
+                case 2:
+                    GamePropertys.p1ch2_die = true;
+                    break;
+                case 3:
+                    GamePropertys.p1ch3_die = true;
+                    break;
+            }
+        } else {
+            switch (GamePropertys.p2_useCh) {
+                case 1:
+                    GamePropertys.p2ch1_die = true;
+                    break;
+                case 2:
+                    GamePropertys.p2ch2_die = true;
+                    break;
+                case 3:
+                    GamePropertys.p2ch3_die = true;
+                    break;
+            }
+        }
+        if (autoTurnControll) {
+            // 死亡時のパーティー人数取得
+            if (GetPartyQty() <= 0) {
+                GameOver();
+            } else {
+                TurnEnd();
+            }
+        }
+    }
+
+    /// <summary>
     /// リスポーン
     /// </summary>
     public void Respawn() {
@@ -686,7 +869,7 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             mapManager.GetPlayerOnBlock(2).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer2);
 
-            // Player1 Move
+        // Player1 Move
         } else {
             mapManager.GetPlayerOnBlock(1).GetComponent<Block>().SetBlockType(BlockType.Field);
             target.GetComponent<Block>().SetBlockType(BlockType.OnPlayer1);
@@ -792,7 +975,8 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             yield return new WaitForSeconds(0.6f);
             target.GetComponent<Animator>().SetFloat("AnimationSpeed", 0.0f);
             turnEndMGR.OnStart();
-            Die();
+            GameOver();
+            //Kill();
         } else {
             yield return null;
             player.GetComponent<Animator>().SetInteger("animation", 13);
@@ -818,19 +1002,31 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     public void UseSkill(Skill skill) {
         switch (skill) {
             case Skill.Damage_5:
-                StartCoroutine(IESkillDamage(5, GamePropertys.p2));
+                UseCost(GetPlayingNumber(), GetCost());
+                StartCoroutine(IESkillDamage(5, GetEnemyObj()));
                 break;
             case Skill.Heal_5:
-                StartCoroutine(IESkillDamage(-5, GamePropertys.p2));
+                UseCost(GetPlayingNumber(), GetCost());
+                StartCoroutine(IESkillDamage(-5, GetPlayerObj()));
                 break;
             case Skill.RandomTeleport_Enemy:
+                UseCost(GetPlayingNumber(), GetCost());
+                Position targetPos = new Position();
+                do {
+                    targetPos = CreateRandomPos();
+                } while (mapManager.GetPosToBlock(targetPos).GetBlockType() != BlockType.Field);
+                
+                TeleportEnemy( mapManager.GetPosToBlock(targetPos).gameObject);
+                TurnEnd();
                 break;
         }
     }
 
     private IEnumerator IESkillDamage(int dmg, GameObject target) {
+        Debug.Log(target);
         if (Damage(dmg)) {
             yield return null;
+            target = GetEnemyObj();
             target.GetComponent<Animator>().SetFloat("AnimationSpeed", 1.0f);
             target.GetComponent<Animator>().SetInteger("animation", 6);
             yield return new WaitForSeconds(0.875f);
@@ -840,14 +1036,14 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
             yield return new WaitForSeconds(0.6f);
             target.GetComponent<Animator>().SetFloat("AnimationSpeed", 0.0f);
             turnEndMGR.OnStart();
-            Die();
+            GameOver();
+            //Kill();
         } else {
             yield return new WaitForSeconds(2.0f);
             turnEndMGR.OnStart();
             OnTurnStart();
         }
     }
-
 
     #endregion
 
