@@ -11623,6 +11623,10 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 8815dfa46aeef0a44861b4d09697cae4, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8815dfa46aeef0a44861b4d09697cae4, type: 2}
   m_IsPrefabParent: 0
@@ -12407,6 +12411,10 @@ Prefab:
     - target: {fileID: 19800000, guid: 6264b2b598b1d2f44a146d818eccb054, type: 2}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 6264b2b598b1d2f44a146d818eccb054, type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 30.0000
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 6264b2b598b1d2f44a146d818eccb054, type: 2}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
@@ -16572,11 +16580,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 6.23
+      value: 6.52
       objectReference: {fileID: 0}
     - target: {fileID: 4161799789693052, guid: 46b56d046db8b7b48bef299ca4f61d8e, type: 2}
       propertyPath: m_LocalPosition.z

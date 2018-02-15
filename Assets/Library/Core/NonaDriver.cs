@@ -848,9 +848,21 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     /// </summary>
     public void Respawn() {
         if (IsPlayer1Turn()) {
-            Teleport(mapManager.player1Base[Random.Range(0, mapManager.player1Base.Count)]);
+            List<GameObject> telepTarget = new List<GameObject>();
+            foreach(GameObject go in mapManager.player1Base) {
+                if(go.GetComponent<Block>().GetBlockType() == BlockType.Field) {
+                    telepTarget.Add(go);
+                }
+            }
+            Teleport(telepTarget[Random.Range(0, telepTarget.Count)]);
         } else {
-            Teleport(mapManager.player2Base[Random.Range(0, mapManager.player2Base.Count)]);
+            List<GameObject> telepTarget = new List<GameObject>();
+            foreach (GameObject go in mapManager.player2Base) {
+                if (go.GetComponent<Block>().GetBlockType() == BlockType.Field) {
+                    telepTarget.Add(go);
+                }
+            }
+            Teleport(telepTarget[Random.Range(0, telepTarget.Count)]);
         }
         TurnEnd();
     }
@@ -1002,15 +1014,15 @@ public class NonaDriver : MonoBehaviour, NonaInterface {
     public void UseSkill(Skill skill) {
         switch (skill) {
             case Skill.Damage_5:
-                UseCost(GetPlayingNumber(), GetCost());
+                UseCost(GetPlayingNumber(), GetSkillCost());
                 StartCoroutine(IESkillDamage(5, GetEnemyObj()));
                 break;
             case Skill.Heal_5:
-                UseCost(GetPlayingNumber(), GetCost());
+                UseCost(GetPlayingNumber(), GetSkillCost());
                 StartCoroutine(IESkillDamage(-5, GetPlayerObj()));
                 break;
             case Skill.RandomTeleport_Enemy:
-                UseCost(GetPlayingNumber(), GetCost());
+                UseCost(GetPlayingNumber(), GetSkillCost());
                 Position targetPos = new Position();
                 do {
                     targetPos = CreateRandomPos();

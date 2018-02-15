@@ -331,7 +331,6 @@
     <Compile Include="Assets\Library\Core\NonaDriver.cs" />
     <Compile Include="Assets\Library\Core\Player\Character.cs" />
     <Compile Include="Assets\Library\Core\PlayerControll\BlockClickHandler.cs" />
-    <Compile Include="Assets\Library\Core\PlayerControll\test.cs" />
     <Compile Include="Assets\Library\Core\Turn\Enums.cs" />
     <Compile Include="Assets\Library\Core\Turn\PartyHandler.cs" />
     <Compile Include="Assets\Library\Core\Turn\SkillApi.cs" />
